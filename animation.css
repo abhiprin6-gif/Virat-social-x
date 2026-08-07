@@ -1,0 +1,111 @@
+/* ==========================
+   VIRAT BROWSER X
+   animation.css
+========================== */
+
+/* Page Load */
+body{
+animation:pageFade .8s ease;
+}
+
+@keyframes pageFade{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* Floating Logo */
+.logo{
+animation:logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-6px);
+}
+}
+
+/* Cards */
+.card{
+position:relative;
+overflow:hidden;
+transition:.4s;
+}
+
+.card::before{
+content:"";
+position:absolute;
+top:-100%;
+left:-100%;
+width:200%;
+height:200%;
+background:linear-gradient(
+45deg,
+transparent,
+rgba(255,255,255,.15),
+transparent
+);
+transform:rotate(45deg);
+transition:.8s;
+}
+
+.card:hover::before{
+top:100%;
+left:100%;
+}
+
+.card:hover{
+transform:
+translateY(-12px)
+scale(1.04);
+box-shadow:
+0 15px 35px rgba(0,0,0,.35),
+0 0 30px rgba(0,198,255,.45);
+}
+
+/* Buttons */
+button{
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+button:active{
+transform:scale(.92);
+}
+
+/* Sidebar */
+.sidebar a{
+position:relative;
+overflow:hidden;
+}
+
+.sidebar a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:0;
+width:0;
+height:3px;
+background:#00c6ff;
+transition:.4s;
+}
+
+.sidebar a:hover::after{
+width:100%;
+}
+
+/* Search */
+.search-box input:focus{
+box-shadow:
+0 0 20px rgba(0

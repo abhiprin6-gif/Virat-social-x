@@ -1,0 +1,124 @@
+/* ==========================
+   VIRAT BROWSER X
+   browser.css
+========================== */
+
+.tab-bar{
+display:flex;
+align-items:center;
+gap:10px;
+overflow-x:auto;
+padding:12px;
+background:rgba(20,25,40,.8);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.tab-bar::-webkit-scrollbar{
+height:6px;
+}
+
+.tab-bar::-webkit-scrollbar-thumb{
+background:#00c6ff;
+border-radius:20px;
+}
+
+.tab{
+min-width:180px;
+height:45px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 15px;
+border-radius:14px;
+background:rgba(255,255,255,.08);
+color:#fff;
+cursor:pointer;
+transition:.35s;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.tab:hover{
+transform:translateY(-3px);
+background:rgba(0,198,255,.18);
+box-shadow:0 0 20px rgba(0,198,255,.35);
+}
+
+.active-tab{
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+font-weight:bold;
+box-shadow:0 0 25px rgba(0,198,255,.45);
+}
+
+.tab span{
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+.tab button{
+background:none;
+border:none;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin-left:10px;
+}
+
+.new-tab-btn{
+position:fixed;
+right:20px;
+bottom:160px;
+width:60px;
+height:60px;
+border:none;
+border-radius:50%;
+font-size:32px;
+color:#fff;
+cursor:pointer;
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+box-shadow:0 0 30px rgba(0,198,255,.45);
+transition:.3s;
+z-index:999;
+}
+
+.new-tab-btn:hover{
+transform:rotate(90deg) scale(1.1);
+}
+
+.browser-window{
+margin:20px;
+height:70vh;
+border-radius:20px;
+overflow:hidden;
+background:#fff;
+box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+.browser-window iframe{
+width:100%;
+height:100%;
+border:none;
+background:#fff;
+}
+
+@media(max-width:768px){
+
+.tab{
+min-width:140px;
+font-size:14px;
+}
+
+.new-tab-btn{
+width:52px;
+height:52px;
+font-size:28px;
+bottom:120px;
+}
+
+.browser-window{
+height:65vh;
+margin:10px;
+}
+
+}

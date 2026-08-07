@@ -1,0 +1,21 @@
+/* Utils */
+
+function $(id){
+
+return document.getElementById(id);
+
+}
+
+function notify(msg){
+
+console.log(msg);
+
+}
+
+function today(){
+
+return new Date()
+
+.toLocaleString();
+
+}

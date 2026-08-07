@@ -1,0 +1,131 @@
+/* ==========================
+   VIRAT BROWSER X
+   tabs.js
+========================== */
+
+let tabs = [];
+let activeTab = 0;
+
+function createTab(title = "New Tab", url = "about:blank") {
+    const id = Date.now() + Math.random();
+
+    tabs.push({
+        id,
+        title,
+        url,
+        pinned: false
+    });
+
+    activeTab = tabs.length - 1;
+
+    saveTabs();
+    renderTabs();
+}
+
+function renderTabs() {
+
+    const bar = document.getElementById("tabBar");
+
+    if (!bar) return;
+
+    bar.innerHTML = "";
+
+    tabs.forEach((tab, index) => {
+
+        const div = document.createElement("div");
+
+        div.className =
+            "tab" + (index === activeTab ? " active-tab" : "");
+
+        div.innerHTML = `
+        <span>${tab.pinned ? "📌 " : ""}${tab.title}</span>
+        <button onclick="closeTab(${index})">✕</button>
+        `;
+
+        div.onclick = () => switchTab(index);
+
+        bar.appendChild(div);
+
+    });
+
+}
+
+function switchTab(index) {
+
+    activeTab = index;
+
+    document.getElementById("url").value =
+        tabs[index].url;
+
+    renderTabs();
+
+}
+
+function closeTab(index) {
+
+    tabs.splice(index, 1);
+
+    if (activeTab >= tabs.length)
+        activeTab = tabs.length - 1;
+
+    if (tabs.length === 0)
+        createTab();
+
+    saveTabs();
+
+    renderTabs();
+
+}
+
+function pinTab(index) {
+
+    tabs[index].pinned = !tabs[index].pinned;
+
+    saveTabs();
+
+    renderTabs();
+
+}
+
+function renameTab(index, title) {
+
+    tabs[index].title = title;
+
+    saveTabs();
+
+    renderTabs();
+
+}
+
+function saveTabs() {
+
+    localStorage.setItem(
+        "VBX_TABS",
+        JSON.stringify(tabs)
+    );
+
+}
+
+function loadTabs() {
+
+    const data =
+        JSON.parse(localStorage.getItem("VBX_TABS"));
+
+    if (data && data.length) {
+
+        tabs = data;
+
+    } else {
+
+        createTab();
+
+    }
+
+    renderTabs();
+
+}
+
+window.addEventListener(
+    "load",
+    loadTabs
+);
