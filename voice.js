@@ -1,39 +1,58 @@
-let recognition;
+"use strict";
 
-if(
-"webkitSpeechRecognition" in window
-){
+const voiceButton = document.getElementById("voiceBtn");
 
-recognition=
-new webkitSpeechRecognition();
+const SpeechRecognition =
+  window.SpeechRecognition ||
+  window.webkitSpeechRecognition;
 
-recognition.lang="en-IN";
+if (!SpeechRecognition) {
 
-recognition.continuous=false;
+  voiceButton.addEventListener("click", () => {
+    alert("इस browser में Voice Search उपलब्ध नहीं है।");
+  });
 
-recognition.interimResults=false;
+} else {
 
-recognition.onresult=function(e){
+  const recognition = new SpeechRecognition();
 
-document.getElementById("url").value=
-e.results[0][0].transcript;
+  recognition.lang = "hi-IN";
+  recognition.continuous = false;
+  recognition.interimResults = false;
 
-searchWeb();
+  recognition.onstart = () => {
+    voiceButton.textContent = "🔴";
+    voiceButton.title = "Listening...";
+  };
 
-};
+  recognition.onresult = event => {
 
-}
+    const text =
+      event.results[0][0].transcript;
 
-function startVoice(){
+    document.getElementById("searchInput").value = text;
 
-if(recognition){
+    if (typeof searchVirat === "function") {
+      searchVirat("Voice");
+    }
+  };
 
-recognition.start();
+  recognition.onerror = () => {
+    voiceButton.textContent = "🎙️";
+  };
 
-}else{
+  recognition.onend = () => {
+    voiceButton.textContent = "🎙️";
+    voiceButton.title = "Voice Search";
+  };
 
-alert("Voice Search Not Supported");
+  voiceButton.addEventListener("click", () => {
 
-}
+    try {
+      recognition.start();
+    } catch (error) {
+      console.log("Voice already active");
+    }
 
+  });
 }

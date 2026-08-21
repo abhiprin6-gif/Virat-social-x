@@ -1,40 +1,44 @@
-/*=====================
-HISTORY MANAGER
-=====================*/
+"use strict";
 
-let browserHistory=
-JSON.parse(
+function getViratHistory() {
 
-localStorage.getItem("VBX_HISTORY")
-
-)||[];
-
-function saveHistory(url){
-
-browserHistory.unshift({
-
-url:url,
-
-time:new Date().toLocaleString()
-
-});
-
-if(browserHistory.length>100)
-
-browserHistory.pop();
-
-localStorage.setItem(
-
-"VBX_HISTORY",
-
-JSON.stringify(browserHistory)
-
-);
+  return JSON.parse(
+    localStorage.getItem("viratHistory") || "[]"
+  );
 
 }
 
-function showHistory(){
+function clearViratHistory() {
 
-console.table(browserHistory);
+  localStorage.removeItem("viratHistory");
+
+  alert("✓ VIRAT X History साफ हो गई।");
 
 }
+
+function showViratHistory() {
+
+  const history = getViratHistory();
+
+  if (!history.length) {
+    alert("◷ अभी कोई search history नहीं है।");
+    return;
+  }
+
+  let output = "";
+
+  history.slice(0, 20).forEach((item, index) => {
+
+    output +=
+      `${index + 1}. ${item.query}\n` +
+      `◉ ${item.mode}  •  ${item.time}\n\n`;
+
+  });
+
+  alert("◷ VIRAT X HISTORY\n\n" + output);
+
+}
+
+window.getViratHistory = getViratHistory;
+window.clearViratHistory = clearViratHistory;
+window.showViratHistory = showViratHistory;
