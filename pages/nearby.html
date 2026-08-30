@@ -7,6 +7,41 @@
 <link rel="stylesheet" href="../Css/style.css">
 </head>
 <body>
+<div id="vxNavBar">
+<button onclick="history.back()">← Back</button>
+<a href="../index.html">⌂ Home</a>
+<button onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+</div>
+<style>
+#vxNavBar{
+position:sticky;
+top:0;
+z-index:9990;
+display:flex;
+gap:10px;
+padding:10px;
+background:#111827;
+box-shadow:0 3px 12px #0003;
+}
+#vxNavBar button,#vxNavBar a{
+border:0;
+padding:10px 15px;
+border-radius:12px;
+background:#1f2937;
+color:#fff;
+text-decoration:none;
+font-size:15px;
+cursor:pointer;
+}
+#vxNavBar a{margin-left:auto}
+@media(max-width:600px){
+#vxNavBar button,#vxNavBar a{
+padding:9px 11px;
+font-size:14px;
+}
+}
+</style>
+
 <header><div class="logo">V</div><div class="title"><h1>VIRAT SOCIAL <span class="s">X</span></h1><small>NEARBY HELP</small></div></header>
 <main class="layout">
 <section class="hero"><div class="heroBox"><h2>📍 Nearby Help</h2><p>अपने आसपास जरूरी services खोजें।</p></div></section>
