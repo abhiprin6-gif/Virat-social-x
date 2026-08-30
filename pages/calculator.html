@@ -42,5 +42,42 @@ try{display.value=Function("return "+display.value)()}
 catch(e){display.value="Error"}
 }
 </script>
+
+<style>
+#vxMenu{position:fixed;top:15px;left:15px;z-index:99999;width:52px;height:52px;border:0;border-radius:50%;font-size:25px;background:#fff;box-shadow:0 4px 15px #0004;cursor:pointer}
+#vxSide{position:fixed;top:0;left:-300px;width:280px;height:100vh;z-index:99998;background:#111827;padding:85px 15px 20px;box-sizing:border-box;transition:.3s;overflow:auto}
+#vxSide.open{left:0}
+#vxSide a{display:block;padding:14px;margin:7px 0;border-radius:13px;background:#1f2937;color:white;text-decoration:none}
+#vxClose{position:absolute;top:18px;right:15px;background:none;border:0;color:white;font-size:25px}
+#vxDark{position:fixed;right:15px;bottom:20px;z-index:99999;width:52px;height:52px;border:0;border-radius:50%;font-size:23px;background:#111827;color:white}
+body.vdark{background:#020617!important;color:#fff!important}
+body.vdark header,body.vdark section,body.vdark .card,body.vdark .help,body.vdark .heroBox,body.vdark .ai{background:#0f172a!important;color:#fff!important}
+</style>
+
+<button id="vxMenu">V</button>
+<nav id="vxSide"><button id="vxClose">✕</button><a href="../index.html">⌂ Home</a><a href="../pages/emergency.html">🆘 Emergency</a><a href="../pages/hospital.html">🏥 Hospital</a><a href="../pages/government.html">🏛️ Government</a><a href="../pages/jobs.html">💼 Jobs</a><a href="../pages/education.html">📚 Education</a><a href="../pages/legal.html">⚖️ Legal</a><a href="../pages/business.html">🏪 Business</a><a href="../pages/nearby.html">📍 Nearby</a><a href="../pages/news.html">📰 News</a><a href="../pages/sports.html">🏆 Sports</a><a href="../pages/browser.html">🌐 Browser</a><a href="../pages/calculator.html">🧮 Calculator</a></nav>
+<button id="vxDark">🌙</button>
+
+<script>
+const vm=document.getElementById("vxMenu");
+const vs=document.getElementById("vxSide");
+const vc=document.getElementById("vxClose");
+const vd=document.getElementById("vxDark");
+
+vm.onclick=()=>vs.classList.toggle("open");
+vc.onclick=()=>vs.classList.remove("open");
+
+if(localStorage.getItem("vxDark")==="1"){
+ document.body.classList.add("vdark");
+ vd.textContent="☀️";
+}
+
+vd.onclick=()=>{
+ document.body.classList.toggle("vdark");
+ const on=document.body.classList.contains("vdark");
+ localStorage.setItem("vxDark",on?"1":"0");
+ vd.textContent=on?"☀️":"🌙";
+};
+</script>
 </body>
 </html>
