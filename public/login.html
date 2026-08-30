@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Login - VIRAT SOCIAL X</title>
+<link rel="stylesheet" href="Css/style.css">
+</head>
+<body>
+<div class="card" style="max-width:420px;margin:80px auto">
+<h1>⚡ VIRAT SOCIAL X</h1>
+<h2 style="margin:20px 0">Login</h2>
+<input id="email" placeholder="Email" style="width:100%;padding:14px;margin:8px 0">
+<input id="password" type="password" placeholder="Password" style="width:100%;padding:14px;margin:8px 0">
+<button onclick="login()">Login</button>
+<p style="margin-top:20px">New user? <a href="signup.html">Create account</a></p>
+</div>
+<script>
+function login(){
+if(!email.value||!password.value)return alert("Email aur password bharo");
+localStorage.setItem("viratLogin","true");
+location.href="index.html";
+}
+</script>
+</body>
+</html>
