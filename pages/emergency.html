@@ -7,11 +7,37 @@
 <link rel="stylesheet" href="../Css/style.css">
 </head>
 <body>
-<div id="vxNavBar">
-<button onclick="history.back()">← Back</button>
-<a href="../index.html">⌂ Home</a>
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+<div id="vxHelpBar">
+<a href="../index.html" class="vxHelpBtn">🆘 Help</a>
+<button class="vxHelpBtn" onclick="navigator.geolocation?navigator.geolocation.getCurrentPosition(p=>window.open('https://www.google.com/maps/search/hospital/@'+p.coords.latitude+','+p.coords.longitude+',14z','_blank')):alert('Location उपलब्ध नहीं है')">📍 Location</button>
 </div>
+<style>
+#vxHelpBar{
+display:flex;
+gap:12px;
+padding:12px 16px;
+margin:0 auto 18px;
+width:min(1200px,94%);
+position:relative;
+z-index:10;
+}
+.vxHelpBtn{
+flex:1;
+max-width:180px;
+padding:12px 16px;
+border:0;
+border-radius:15px;
+background:#2563eb;
+color:white;
+font-weight:bold;
+font-size:15px;
+text-align:center;
+text-decoration:none;
+cursor:pointer;
+}
+</style>
+
+
 <style>
 #vxNavBar{
 position:sticky;
