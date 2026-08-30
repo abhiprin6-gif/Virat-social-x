@@ -9,7 +9,7 @@
 <body>
 
 <header>
-<div class="logo">V</div>
+<button class="logo menu-logo" id="vMenuBtn" type="button">V</button>
 
 <div class="title">
 <h1>VIRAT SOCIAL <span class="s">X</span></h1>
@@ -147,21 +147,7 @@ function askAI(){
 
 
 <style>
-#vMenuBtn{
-position:fixed;
-top:95px;
-left:12px;
-z-index:99999;
-width:48px;
-height:48px;
-border:0;
-border-radius:50%;
-background:#ffffff;
-box-shadow:0 4px 15px #0004;
-font-size:25px;
-font-weight:bold;
-cursor:pointer;
-}
+
 #vSideMenu{
 position:fixed;
 top:0;
@@ -202,7 +188,7 @@ z-index:99997;
 #vOverlay.show{display:block}
 </style>
 
-<button id="vMenuBtn" type="button">☰</button>
+
 
 <div id="vOverlay"></div>
 
@@ -258,5 +244,19 @@ color:#111827 !important;
 font-size:27px !important;
 font-weight:bold !important;
 box-shadow:0 5px 18px #0004 !important;
+}
+</style>
+
+<style>
+.menu-logo{
+border:0;
+cursor:pointer;
+padding:0;
+color:#111827;
+font-family:Arial,sans-serif;
+}
+
+.menu-logo:active{
+transform:scale(.92);
 }
 </style>
