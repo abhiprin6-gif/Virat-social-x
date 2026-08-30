@@ -69,7 +69,7 @@ font-size:14px;
 </style>
 
 <header>
-<div class="logo">V</div>
+<button class="logo menu-logo" id="vLogoMenu" type="button">V</button>
 <div class="title"><h1>VIRAT BROWSER</h1><small>FAST • SIMPLE • FUTURE</small></div>
 </header>
 
@@ -100,7 +100,7 @@ location.href="https://www.google.com/search?q="+encodeURIComponent(q);
 </script>
 
 <style>
-#vxMenu{display:none!important;position:fixed;top:15px;left:15px;z-index:99999;width:52px;height:52px;border:0;border-radius:50%;font-size:25px;background:#fff;box-shadow:0 4px 15px #0004;cursor:pointer}
+#vxMenu{display:none!important;display:none!important;position:fixed;top:15px;left:15px;z-index:99999;width:52px;height:52px;border:0;border-radius:50%;font-size:25px;background:#fff;box-shadow:0 4px 15px #0004;cursor:pointer}
 #vxSide{position:fixed;top:0;left:-300px;width:280px;height:100vh;z-index:99998;background:#111827;padding:85px 15px 20px;box-sizing:border-box;transition:.3s;overflow:auto}
 #vxSide.open{left:0}
 #vxSide a{display:block;padding:14px;margin:7px 0;border-radius:13px;background:#1f2937;color:white;text-decoration:none}
@@ -134,6 +134,111 @@ vd.onclick=()=>{
  localStorage.setItem("vxDark",on?"1":"0");
  vd.textContent=on?"☀️":"🌙";
 };
+</script>
+
+<style>
+.menu-logo{
+    border:0;
+    cursor:pointer;
+    padding:0;
+    flex-shrink:0;
+    appearance:none;
+    -webkit-appearance:none;
+}
+
+#vSideMenu{
+    position:fixed;
+    top:0;
+    left:-320px;
+    width:300px;
+    max-width:85vw;
+    height:100vh;
+    z-index:99999;
+    background:#0f172a;
+    padding:75px 16px 25px;
+    box-sizing:border-box;
+    overflow-y:auto;
+    transition:left .25s ease;
+    box-shadow:8px 0 30px #0005;
+}
+
+#vSideMenu.open{
+    left:0;
+}
+
+#vSideMenu a{
+    display:block;
+    padding:15px;
+    margin:8px 0;
+    border-radius:14px;
+    background:#1e293b;
+    color:#fff;
+    text-decoration:none;
+    font-size:16px;
+}
+
+#vSideMenu a:active{
+    transform:scale(.98);
+}
+
+#vMenuClose{
+    position:absolute;
+    top:15px;
+    right:15px;
+    width:42px;
+    height:42px;
+    border:0;
+    border-radius:50%;
+    background:#fff;
+    color:#111;
+    font-size:20px;
+}
+
+#vMenuOverlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:99998;
+    background:#0008;
+}
+
+#vMenuOverlay.show{
+    display:block;
+}
+</style>
+
+<nav id="vSideMenu">
+<button id="vMenuClose" type="button">✕</button>
+<div style="color:#fff;font-size:20px;font-weight:bold;margin:5px 0 18px">
+🇮🇳 VIRAT SOCIAL X
+</div>
+<a href="../index.html">⌂ Home</a><a href="../pages/emergency.html">🆘 Emergency</a><a href="../pages/hospital.html">🏥 Hospital</a><a href="../pages/government.html">🏛️ Government</a><a href="../pages/jobs.html">💼 Jobs</a><a href="../pages/education.html">📚 Education</a><a href="../pages/legal.html">⚖️ Legal</a><a href="../pages/business.html">🏪 Business</a><a href="../pages/nearby.html">📍 Nearby</a><a href="../pages/news.html">📰 News</a><a href="../pages/sports.html">🏆 Sports</a><a href="../pages/browser.html">🌐 Browser</a><a href="../pages/calculator.html">🧮 Calculator</a>
+</nav>
+<div id="vMenuOverlay"></div>
+
+<script>
+(function(){
+    const btn=document.getElementById("vLogoMenu");
+    const menu=document.getElementById("vSideMenu");
+    const close=document.getElementById("vMenuClose");
+    const overlay=document.getElementById("vMenuOverlay");
+
+    if(!btn || !menu) return;
+
+    function openMenu(){
+        menu.classList.add("open");
+        overlay.classList.add("show");
+    }
+
+    function closeMenu(){
+        menu.classList.remove("open");
+        overlay.classList.remove("show");
+    }
+
+    btn.addEventListener("click",openMenu);
+    close.addEventListener("click",closeMenu);
+    overlay.addEventListener("click",closeMenu);
+})();
 </script>
 </body>
 </html>
