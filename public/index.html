@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VIRAT SOCIAL X | Help Hub</title>
+<link rel="stylesheet" href="Css/style.css">
+</head>
+<body>
+
+<header>
+<div class="logo">V</div>
+
+<div class="title">
+<h1>VIRAT SOCIAL <span class="s">X</span></h1>
+<small>HELP • CONNECT • EMPOWER</small>
+</div>
+
+<input id="search" class="search" oninput="searchHelp()" placeholder="🔍 मदद खोजें...">
+
+<div class="round" onclick="useLocation()">📍</div>
+<div class="round">🔔</div>
+<div class="round">👤</div>
+</header>
+
+<main class="layout">
+
+<section class="hero">
+<div class="heroBox">
+<h2>भारत के लिए एक Digital Help Hub 🇮🇳</h2>
+<p>
+जरूरी जानकारी, सरकारी योजनाएँ, शिक्षा, रोजगार,
+आपातकालीन सहायता और रोज़मर्रा की मदद — एक जगह।
+</p>
+</div>
+</section>
+
+<section class="grid">
+
+<div class="help" onclick="location.href='pages/emergency.html'">
+<div class="helpIcon">🆘</div>
+<h3>Emergency Help</h3>
+<p>आपातकाल में जरूरी सहायता और नंबर</p>
+</div>
+
+<div class="help" onclick="location.href='pages/hospital.html'">
+<div class="helpIcon">🏥</div>
+<h3>Hospital & Health</h3>
+<p>अस्पताल और स्वास्थ्य संबंधी जानकारी</p>
+</div>
+
+<div class="help" onclick="location.href='pages/government.html'">
+<div class="helpIcon">🏛️</div>
+<h3>Government Schemes</h3>
+<p>सरकारी योजनाएँ और आवेदन जानकारी</p>
+</div>
+
+<div class="help" onclick="location.href='pages/jobs.html'">
+<div class="helpIcon">💼</div>
+<h3>Jobs & Work</h3>
+<p>नौकरी, कौशल और काम के अवसर</p>
+</div>
+
+<div class="help" onclick="location.href='pages/education.html'">
+<div class="helpIcon">📚</div>
+<h3>Education</h3>
+<p>पढ़ाई, courses और learning resources</p>
+</div>
+
+<div class="help" onclick="location.href='pages/legal.html'">
+<div class="helpIcon">⚖️</div>
+<h3>Legal Help</h3>
+<p>नागरिक और कानूनी जानकारी</p>
+</div>
+
+<div class="help" onclick="location.href='pages/business.html'">
+<div class="helpIcon">🏪</div>
+<h3>Business</h3>
+<p>व्यापार शुरू करने और बढ़ाने की जानकारी</p>
+</div>
+
+<div class="help" onclick="location.href='pages/nearby.html'">
+<div class="helpIcon">📍</div>
+<h3>Nearby Help</h3>
+<p>आस-पास की उपयोगी services खोजें</p>
+</div>
+
+</section>
+
+<section class="emergency">
+<h2>🚨 Quick Emergency</h2>
+<p style="margin-top:8px">
+गंभीर emergency में अपने क्षेत्र की official emergency service से तुरंत संपर्क करें।
+</p>
+
+<div class="buttons">
+<button class="btn" onclick="callNumber('112')">📞 112 Emergency</button><button class="btn" onclick="useLocation()">📍 Nearby Help</button>
+<button class="btn" onclick="callNumber('108')">🚑 108 Ambulance</button>
+<button class="btn" onclick="callNumber('101')">🔥 101 Fire</button>
+</div>
+</section>
+
+<section class="ai">
+<h2>🤖 VIRAT AI Help</h2>
+<p style="margin-top:8px">
+अपनी समस्या लिखें और सही category चुनने में मदद पाएँ।
+</p>
+
+<input id="question" placeholder="जैसे: सरकारी योजना कैसे खोजूँ?">
+<button onclick="askVirat()">Ask VIRAT AI</button>
+
+<p id="answer" style="margin-top:15px;font-weight:bold"></p>
+</section>
+
+</main>
+
+<footer>
+<span class="s">MADE IN INDIA</span> •
+<span class="b">MADE FOR PEOPLE</span> •
+<span class="g">BUILT FOR THE FUTURE 🇮🇳</span>
+</footer>
+
+<script src="Js/app.js"></script><script>
+function openHelp(name){
+ alert(name+" section जल्द उपलब्ध होगा।");
+}
+
+function callNumber(number){
+ location.href="tel:"+number;
+}
+
+function askAI(){
+ const q=document.getElementById("question").value.trim();
+ const answer=document.getElementById("answer");
+
+ if(!q){
+  answer.textContent="पहले अपनी समस्या लिखें।";
+  return;
+ }
+
+ answer.textContent=
+ "आपकी समस्या '"+q+
+ "' है। VIRAT AI आपको सही Help category तक पहुँचाएगा।";
+}
+</script>
+
+</body>
+</html>

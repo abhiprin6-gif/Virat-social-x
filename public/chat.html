@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chat - VIRAT SOCIAL X</title>
+<link rel="stylesheet" href="Css/style.css">
+</head>
+<body>
+<header>
+<div class="logo">⚡ VIRAT SOCIAL X</div>
+<nav><a href="index.html">🏠</a><a href="profile.html">👤</a><a href="reels.html">▶</a></nav>
+</header>
+
+<div class="card" style="max-width:600px;margin:30px auto">
+<h2>💬 Chat</h2>
+<div id="messages" style="min-height:300px;margin-top:20px"></div>
+
+<input id="msg" placeholder="Message लिखें..."
+style="width:70%;padding:14px">
+
+<button onclick="send()">Send</button>
+</div>
+
+<script>
+function send(){
+const input=document.getElementById("msg");
+const text=input.value.trim();
+if(!text)return;
+
+const p=document.createElement("p");
+p.className="post-item";
+p.textContent="👤 You: "+text;
+
+document.getElementById("messages").appendChild(p);
+input.value="";
+}
+</script>
+</body>
+</html>

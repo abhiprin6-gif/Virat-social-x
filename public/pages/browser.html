@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VIRAT Browser</title>
+<link rel="stylesheet" href="../Css/style.css">
+</head>
+<body>
+<header>
+<div class="logo">V</div>
+<div class="title"><h1>VIRAT BROWSER</h1><small>FAST • SIMPLE • FUTURE</small></div>
+</header>
+
+<main class="layout">
+<section class="card" style="text-align:center">
+<h2>🌐 VIRAT Browser</h2>
+<p style="margin:15px 0">Web search करें</p>
+
+<input id="url" class="search"
+style="width:90%;max-width:700px"
+placeholder="Search or enter website">
+
+<button class="btn" onclick="go()">Go</button>
+</section>
+</main>
+
+<script>
+function go(){
+let q=document.getElementById("url").value.trim();
+if(!q)return;
+
+if(/^https?:\/\//i.test(q)){
+location.href=q;
+}else{
+location.href="https://www.google.com/search?q="+encodeURIComponent(q);
+}
+}
+</script>
+</body>
+</html>
