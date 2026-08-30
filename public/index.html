@@ -175,5 +175,100 @@ function askAI(){
 }
 </script>
 
+
+
+<style>
+#vMenuBtn{
+position:fixed;
+top:88px;
+left:12px;
+z-index:99999;
+width:48px;
+height:48px;
+border:0;
+border-radius:50%;
+background:#ffffff;
+box-shadow:0 4px 15px #0004;
+font-size:25px;
+font-weight:bold;
+cursor:pointer;
+}
+#vSideMenu{
+position:fixed;
+top:0;
+left:-310px;
+width:290px;
+height:100vh;
+background:#101827;
+z-index:99998;
+padding:85px 15px 20px;
+box-sizing:border-box;
+overflow-y:auto;
+transition:.3s;
+}
+#vSideMenu.open{left:0}
+#vSideMenu a{
+display:block;
+padding:14px;
+margin:7px 0;
+border-radius:14px;
+background:#1e293b;
+color:white;
+text-decoration:none;
+font-size:16px;
+}
+#vSideMenu .vtitle{
+color:white;
+font-size:20px;
+font-weight:bold;
+margin-bottom:15px;
+}
+#vOverlay{
+display:none;
+position:fixed;
+inset:0;
+background:#0008;
+z-index:99997;
+}
+#vOverlay.show{display:block}
+</style>
+
+<button id="vMenuBtn" type="button">☰</button>
+
+<div id="vOverlay"></div>
+
+<nav id="vSideMenu">
+<div class="vtitle">🇮🇳 VIRAT SOCIAL X</div>
+
+<a href="./index.html">⌂ Home</a>
+<a href="./pages/emergency.html">🆘 Emergency Help</a>
+<a href="./pages/hospital.html">🏥 Hospital & Health</a>
+<a href="./pages/government.html">🏛️ Government Schemes</a>
+<a href="./pages/jobs.html">💼 Jobs & Work</a>
+<a href="./pages/education.html">📚 Education</a>
+<a href="./pages/legal.html">⚖️ Legal Help</a>
+<a href="./pages/business.html">🏪 Business</a>
+<a href="./pages/nearby.html">📍 Nearby Help</a>
+<a href="./pages/news.html">📰 News</a>
+<a href="./pages/sports.html">🏆 Sports</a>
+<a href="./pages/browser.html">🌐 Browser</a>
+<a href="./pages/calculator.html">🧮 Calculator</a>
+</nav>
+
+<script>
+const vBtn=document.getElementById("vMenuBtn");
+const vMenu=document.getElementById("vSideMenu");
+const vOver=document.getElementById("vOverlay");
+
+vBtn.addEventListener("click",()=>{
+vMenu.classList.add("open");
+vOver.classList.add("show");
+});
+
+vOver.addEventListener("click",()=>{
+vMenu.classList.remove("open");
+vOver.classList.remove("show");
+});
+</script>
 </body>
 </html>
