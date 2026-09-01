@@ -322,5 +322,47 @@ vd.onclick=()=>{
     overlay.addEventListener("click",closeMenu);
 })();
 </script>
+
+<section class="vx-quick">
+<h2>Quick Links</h2>
+<div class="vx-grid"><a class="vx-card" href="emergency.html"><span>🚨</span><b>Emergency</b></a><a class="vx-card" href="hospital.html"><span>🏥</span><b>Hospital</b></a><a class="vx-card" href="government.html"><span>🏛️</span><b>Government</b></a><a class="vx-card" href="jobs.html"><span>💼</span><b>Jobs</b></a><a class="vx-card" href="education.html"><span>📚</span><b>Education</b></a><a class="vx-card" href="legal.html"><span>⚖️</span><b>Legal</b></a><a class="vx-card" href="business.html"><span>🏪</span><b>Business</b></a><a class="vx-card" href="nearby.html"><span>📍</span><b>Nearby</b></a><a class="vx-card" href="news.html"><span>📰</span><b>News</b></a><a class="vx-card" href="sports.html"><span>🏆</span><b>Sports</b></a><a class="vx-card" href="browser.html"><span>🌐</span><b>Browser</b></a><a class="vx-card" href="calculator.html"><span>🧮</span><b>Calculator</b></a></div>
+</section>
+<style>
+.vx-quick{
+  margin:20px 12px;
+}
+.vx-quick h2{
+  margin-bottom:12px;
+  font-size:22px;
+}
+.vx-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.vx-card{
+  min-height:75px;
+  padding:14px;
+  border-radius:18px;
+  background:#1e293b;
+  color:#fff;
+  text-decoration:none;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  box-shadow:0 4px 12px #0003;
+}
+.vx-card span{
+  font-size:24px;
+}
+.vx-card b{
+  font-size:14px;
+  margin-top:5px;
+}
+.vx-card:active{
+  transform:scale(.97);
+}
+</style>
+
 </body>
 </html>
