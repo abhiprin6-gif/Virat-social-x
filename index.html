@@ -57,6 +57,224 @@
 
 </head>
 <body>
+
+<!-- VX-DASHBOARD-START -->
+
+<section class="vx-dashboard">
+
+  <div class="vx-welcome">
+    <div>
+      <small>WELCOME TO</small>
+      <h2>VIRAT SOCIAL X</h2>
+      <p>India's Digital Help & Information Hub</p>
+    </div>
+  </div>
+
+  <div class="vx-feature-grid">
+
+    <a href="pages/emergency.html" class="vx-feature emergency">
+      <span>🚨</span>
+      <strong>Emergency</strong>
+      <small>Quick emergency help</small>
+    </a>
+
+    <a href="pages/government.html" class="vx-feature">
+      <span>🏛️</span>
+      <strong>Government</strong>
+      <small>Schemes & services</small>
+    </a>
+
+    <a href="pages/jobs.html" class="vx-feature">
+      <span>💼</span>
+      <strong>Jobs</strong>
+      <small>Latest opportunities</small>
+    </a>
+
+    <a href="pages/education.html" class="vx-feature">
+      <span>📚</span>
+      <strong>Education</strong>
+      <small>Study & learning</small>
+    </a>
+
+    <a href="pages/hospital.html" class="vx-feature">
+      <span>🏥</span>
+      <strong>Hospital</strong>
+      <small>Health services</small>
+    </a>
+
+    <a href="pages/sports.html" class="vx-feature">
+      <span>🏆</span>
+      <strong>Sports</strong>
+      <small>Sports updates</small>
+    </a>
+
+    <a href="pages/news.html" class="vx-feature">
+      <span>📰</span>
+      <strong>News</strong>
+      <small>Latest information</small>
+    </a>
+
+    <a href="pages/nearby.html" class="vx-feature">
+      <span>📍</span>
+      <strong>Nearby</strong>
+      <small>Nearby services</small>
+    </a>
+
+    <a href="pages/business.html" class="vx-feature">
+      <span>🏪</span>
+      <strong>Business</strong>
+      <small>Business resources</small>
+    </a>
+
+    <a href="pages/legal.html" class="vx-feature">
+      <span>⚖️</span>
+      <strong>Legal</strong>
+      <small>Legal information</small>
+    </a>
+
+    <a href="pages/browser.html" class="vx-feature">
+      <span>🌐</span>
+      <strong>Browser</strong>
+      <small>Web tools</small>
+    </a>
+
+    <a href="pages/calculator.html" class="vx-feature">
+      <span>🧮</span>
+      <strong>Calculator</strong>
+      <small>Useful calculator</small>
+    </a>
+
+  </div>
+
+  <div class="vx-info-box">
+    <strong>💡 VIRAT SOCIAL X</strong>
+    <p>Useful digital services, information and tools — all in one place.</p>
+  </div>
+
+</section>
+
+<style>
+.vx-dashboard{
+  width:100%;
+  max-width:1100px;
+  margin:0 auto;
+  padding:15px;
+  box-sizing:border-box;
+}
+
+.vx-welcome{
+  padding:22px;
+  margin-bottom:18px;
+  border-radius:24px;
+  background:linear-gradient(135deg,#111827,#1e3a8a);
+  color:#fff;
+  box-shadow:0 8px 25px #0004;
+}
+
+.vx-welcome small{
+  opacity:.75;
+  letter-spacing:2px;
+}
+
+.vx-welcome h2{
+  margin:6px 0;
+  font-size:28px;
+}
+
+.vx-welcome p{
+  margin:0;
+  opacity:.85;
+}
+
+.vx-feature-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.vx-feature{
+  min-height:120px;
+  padding:17px;
+  box-sizing:border-box;
+  border-radius:20px;
+  background:#1e293b;
+  color:#fff;
+  text-decoration:none;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  box-shadow:0 5px 16px #0003;
+  transition:.2s;
+}
+
+.vx-feature span{
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+.vx-feature strong{
+  font-size:17px;
+}
+
+.vx-feature small{
+  margin-top:5px;
+  opacity:.7;
+}
+
+.vx-feature:active{
+  transform:scale(.96);
+}
+
+.vx-feature.emergency{
+  background:#7f1d1d;
+}
+
+.vx-info-box{
+  margin-top:18px;
+  padding:18px;
+  border-radius:20px;
+  background:#1e293b;
+  color:#fff;
+}
+
+.vx-info-box p{
+  margin:7px 0 0;
+  opacity:.75;
+}
+
+@media(max-width:700px){
+  .vx-feature-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .vx-welcome h2{
+    font-size:23px;
+  }
+}
+
+@media(max-width:400px){
+  .vx-feature-grid{
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+
+  .vx-feature{
+    min-height:105px;
+    padding:13px;
+  }
+
+  .vx-feature span{
+    font-size:25px;
+  }
+
+  .vx-feature strong{
+    font-size:15px;
+  }
+}
+</style>
+
+<!-- VX-DASHBOARD-END -->
+
 <div id="vxHelpBar">
 <a href="pages/emergency.html" class="vxHelpBtn">🆘 Help</a>
 <button class="vxHelpBtn" onclick="useLocation()">📍 Location</button>
