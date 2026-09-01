@@ -356,5 +356,202 @@ vd.onclick=()=>{
 }
 </style>
 
+
+<!-- VX-JOBS-START -->
+<section class="vx-jobs">
+
+  <div class="vx-jobs-hero">
+    <span>💼</span>
+    <div>
+      <small>VIRAT SOCIAL X</small>
+      <h1>Government & Private Jobs</h1>
+      <p>नौकरी और भर्ती की जानकारी एक जगह</p>
+    </div>
+  </div>
+
+  <div class="vx-job-search">
+    <input id="jobSearch" type="search"
+           placeholder="Job, SSC, Railway, Police आदि खोजें...">
+  </div>
+
+  <div id="jobGrid" class="vx-job-grid">
+
+    <a href="https://www.ssc.gov.in/" target="_blank" rel="noopener" class="job-card">
+      <span>🏛️</span>
+      <strong>SSC</strong>
+      <small>Staff Selection Commission</small>
+    </a>
+
+    <a href="https://www.rrbapply.gov.in/" target="_blank" rel="noopener" class="job-card">
+      <span>🚆</span>
+      <strong>Railway</strong>
+      <small>Railway recruitment</small>
+    </a>
+
+    <a href="https://upsc.gov.in/" target="_blank" rel="noopener" class="job-card">
+      <span>🇮🇳</span>
+      <strong>UPSC</strong>
+      <small>Central government recruitment</small>
+    </a>
+
+    <a href="https://www.ibps.in/" target="_blank" rel="noopener" class="job-card">
+      <span>🏦</span>
+      <strong>Bank Jobs</strong>
+      <small>IBPS recruitment</small>
+    </a>
+
+    <a href="https://www.indiapost.gov.in/" target="_blank" rel="noopener" class="job-card">
+      <span>📮</span>
+      <strong>India Post</strong>
+      <small>Postal recruitment & services</small>
+    </a>
+
+    <a href="https://uppbpb.gov.in/" target="_blank" rel="noopener" class="job-card">
+      <span>👮</span>
+      <strong>UP Police</strong>
+      <small>Police recruitment</small>
+    </a>
+
+    <a href="https://upsssc.gov.in/" target="_blank" rel="noopener" class="job-card">
+      <span>📋</span>
+      <strong>UPSSSC</strong>
+      <small>Uttar Pradesh recruitment</small>
+    </a>
+
+    <a href="https://www.ncs.gov.in/" target="_blank" rel="noopener" class="job-card">
+      <span>🔎</span>
+      <strong>National Career Service</strong>
+      <small>Jobs & career services</small>
+    </a>
+
+  </div>
+
+</section>
+
+<style>
+.vx-jobs{
+  max-width:1100px;
+  margin:auto;
+  padding:15px;
+}
+
+.vx-jobs-hero{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:22px;
+  border-radius:24px;
+  background:#172554;
+  color:#fff;
+  box-shadow:0 7px 22px #0004;
+}
+
+.vx-jobs-hero>span{
+  font-size:42px;
+}
+
+.vx-jobs-hero small{
+  opacity:.7;
+  letter-spacing:1.5px;
+}
+
+.vx-jobs-hero h1{
+  margin:5px 0;
+  font-size:26px;
+}
+
+.vx-jobs-hero p{
+  margin:0;
+  opacity:.8;
+}
+
+.vx-job-search{
+  margin:18px 0;
+}
+
+#jobSearch{
+  width:100%;
+  box-sizing:border-box;
+  padding:15px 18px;
+  border:0;
+  outline:0;
+  border-radius:18px;
+  font-size:16px;
+  background:#e5e7eb;
+}
+
+.vx-job-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.job-card{
+  padding:18px;
+  min-height:110px;
+  border-radius:20px;
+  background:#1e293b;
+  color:#fff;
+  text-decoration:none;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  box-shadow:0 5px 15px #0003;
+}
+
+.job-card span{
+  font-size:28px;
+}
+
+.job-card strong{
+  margin-top:6px;
+  font-size:17px;
+}
+
+.job-card small{
+  margin-top:4px;
+  opacity:.7;
+}
+
+.job-card:active{
+  transform:scale(.97);
+}
+
+@media(max-width:500px){
+  .vx-job-grid{
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+
+  .job-card{
+    min-height:105px;
+    padding:13px;
+  }
+
+  .vx-jobs-hero h1{
+    font-size:21px;
+  }
+}
+</style>
+
+<script>
+(function(){
+  const input=document.getElementById("jobSearch");
+  const cards=[...document.querySelectorAll(".job-card")];
+
+  if(!input)return;
+
+  input.addEventListener("input",function(){
+    const q=this.value.toLowerCase().trim();
+
+    cards.forEach(card=>{
+      const text=card.innerText.toLowerCase();
+      card.style.display=(!q || text.includes(q)) ? "" : "none";
+    });
+  });
+})();
+</script>
+<!-- VX-JOBS-END -->
+
 </body>
 </html>
