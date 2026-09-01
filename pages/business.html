@@ -17,6 +17,48 @@
 
 </head>
 <body>
+<nav class="vx-page-nav">
+  <strong>🇮🇳 VIRAT SOCIAL X</strong>
+  <div class="vx-page-links"><a href="../index.html">⌂ Home</a><a href="emergency.html">🆘 Emergency</a><a href="hospital.html">🏥 Hospital</a><a href="government.html">🏛️ Government</a><a href="jobs.html">💼 Jobs</a><a href="education.html">📚 Education</a><a href="legal.html">⚖️ Legal</a><a href="business.html">🏪 Business</a><a href="nearby.html">📍 Nearby</a><a href="news.html">📰 News</a><a href="sports.html">🏆 Sports</a><a href="browser.html">🌐 Browser</a><a href="calculator.html">🧮 Calculator</a></div>
+</nav>
+<style>
+.vx-page-nav{
+  position:sticky;
+  top:0;
+  z-index:9999;
+  background:#0f172a;
+  color:#fff;
+  padding:12px;
+  box-shadow:0 3px 15px #0004;
+}
+.vx-page-nav strong{
+  display:block;
+  font-size:18px;
+  margin-bottom:10px;
+}
+.vx-page-links{
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.vx-page-links::-webkit-scrollbar{
+  display:none;
+}
+.vx-page-links a{
+  flex:0 0 auto;
+  padding:9px 13px;
+  border-radius:20px;
+  background:#1e293b;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+}
+.vx-page-links a:active{
+  transform:scale(.96);
+}
+</style>
+
 <div id="vxHelpBar">
 <a href="../index.html" class="vxHelpBtn">🆘 Help</a>
 <button class="vxHelpBtn" onclick="navigator.geolocation?navigator.geolocation.getCurrentPosition(p=>window.open('https://www.google.com/maps/search/hospital/@'+p.coords.latitude+','+p.coords.longitude+',14z','_blank')):alert('Location उपलब्ध नहीं है')">📍 Location</button>
