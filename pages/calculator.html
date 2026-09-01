@@ -381,5 +381,78 @@ vd.onclick=()=>{
 }
 </style>
 
+
+<!-- VX-MODULE-START -->
+<section class="vx-module">
+<div class="vx-module-hero">
+<div class="icon">🧮</div>
+<div>
+<small>VIRAT SOCIAL X</small>
+<h1>Calculator Tools</h1>
+<p>Useful calculators और quick tools</p>
+</div>
+</div>
+
+<input class="vx-module-search" type="search"
+placeholder="Calculator Tools में खोजें...">
+
+<div class="vx-module-grid">
+
+<a class="vx-module-card" href="../tools.html" target="_blank" rel="noopener">
+<span>🧮</span>
+<strong>Calculator</strong>
+<small>Open official resource</small>
+</a>
+<a class="vx-module-card" href="../tools.html" target="_blank" rel="noopener">
+<span>💰</span>
+<strong>Finance</strong>
+<small>Open official resource</small>
+</a>
+<a class="vx-module-card" href="../tools.html" target="_blank" rel="noopener">
+<span>📊</span>
+<strong>Percentage</strong>
+<small>Open official resource</small>
+</a>
+<a class="vx-module-card" href="../tools.html" target="_blank" rel="noopener">
+<span>⏱️</span>
+<strong>Quick Tools</strong>
+<small>Open official resource</small>
+</a>
+</div>
+</section>
+
+<style>
+.vx-module{max-width:1100px;margin:auto;padding:15px}
+.vx-module-hero{padding:24px;border-radius:24px;background:#172554;color:#fff;display:flex;align-items:center;gap:15px;box-shadow:0 7px 22px #0004}
+.vx-module-hero .icon{font-size:44px}
+.vx-module-hero h1{margin:4px 0;font-size:27px}
+.vx-module-hero p{margin:0;opacity:.8}
+.vx-module-search{width:100%;box-sizing:border-box;margin:18px 0;padding:15px 18px;border:0;outline:0;border-radius:18px;font-size:16px;background:#e5e7eb}
+.vx-module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.vx-module-card{min-height:120px;padding:18px;border-radius:20px;background:#1e293b;color:#fff;text-decoration:none;display:flex;flex-direction:column;justify-content:center;box-shadow:0 5px 15px #0003}
+.vx-module-card span{font-size:30px}
+.vx-module-card strong{font-size:17px;margin-top:7px}
+.vx-module-card small{opacity:.7;margin-top:4px}
+.vx-module-card:active{transform:scale(.97)}
+@media(min-width:800px){.vx-module-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:400px){.vx-module-grid{gap:8px}.vx-module-card{padding:13px;min-height:105px}.vx-module-hero h1{font-size:21px}}
+</style>
+
+
+<script>
+(function(){
+const box=document.currentScript.previousElementSibling.previousElementSibling;
+if(!box)return;
+const input=box.querySelector(".vx-module-search");
+const cards=box.querySelectorAll(".vx-module-card");
+if(!input)return;
+input.addEventListener("input",function(){
+const q=this.value.toLowerCase().trim();
+cards.forEach(c=>c.style.display=(!q||c.innerText.toLowerCase().includes(q))?"":"none");
+});
+})();
+</script>
+<!-- VX-MODULE-END -->
+
 </body>
 </html>
