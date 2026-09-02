@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Profile | VIRAT SOCIAL X</title>
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#0f172a;
+color:#fff;
+padding:20px;
+}
+.card{
+max-width:500px;
+margin:40px auto;
+background:#1e293b;
+padding:30px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 10px 30px #0005;
+}
+.avatar{
+width:90px;
+height:90px;
+margin:auto;
+border-radius:50%;
+background:#2563eb;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:45px;
+font-weight:bold;
+}
+button,a{
+display:inline-block;
+margin:8px;
+padding:12px 20px;
+border:0;
+border-radius:20px;
+background:#2563eb;
+color:#fff;
+text-decoration:none;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+<div class="avatar" id="avatar">V</div>
+<h1 id="name">Guest</h1>
+<p id="email">Login करके profile इस्तेमाल करें</p>
+
+<div>
+<a href="index.html">🏠 Home</a>
+<a href="login.html">🔐 Login</a>
+</div>
+
+<button id="logout">Logout</button>
+</div>
+
+<script src="Js/auth.js"></script>
+<script>
+const user=VXAuth.get();
+
+if(user){
+ document.getElementById("name").textContent=user.name;
+ document.getElementById("email").textContent=user.email;
+ document.getElementById("avatar").textContent=
+   (user.name||"V").charAt(0).toUpperCase();
+}
+
+document.getElementById("logout").onclick=function(){
+ VXAuth.logout();
+};
+</script>
+
+</body>
+</html>
