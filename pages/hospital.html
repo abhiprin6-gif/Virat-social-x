@@ -691,5 +691,100 @@ font-weight:bold;
 ">🏠 VIRAT SOCIAL X Home</a>
 </div>
 
+
+<!-- VX-SERVICE-DASH-START -->
+<section class="vx-dash">
+
+<div class="vx-dash-head">
+<small>🇮🇳 VIRAT SOCIAL X</small>
+<h1>Useful Services</h1>
+<p>Important official services और useful resources एक जगह।</p>
+</div>
+
+<input
+class="vx-dash-search"
+id="vxDashSearch"
+type="search"
+placeholder="🔎 इस page पर service खोजें..."
+>
+
+<div class="vx-dash-grid" id="vxDashGrid">
+
+<a class="vx-dash-card" href="https://abdm.gov.in/" target="_blank" rel="noopener noreferrer">
+<span class="i">🏥</span>
+<b>ABDM</b>
+<small>Open service →</small>
+</a>
+
+<a class="vx-dash-card" href="https://www.mohfw.gov.in/" target="_blank" rel="noopener noreferrer">
+<span class="i">🩺</span>
+<b>Health Ministry</b>
+<small>Open service →</small>
+</a>
+
+<a class="vx-dash-card" href="https://esanjeevani.mohfw.gov.in/" target="_blank" rel="noopener noreferrer">
+<span class="i">💊</span>
+<b>eSanjeevani</b>
+<small>Open service →</small>
+</a>
+
+<a class="vx-dash-card" href="https://www.india.gov.in/topics/health" target="_blank" rel="noopener noreferrer">
+<span class="i">📋</span>
+<b>Health Portal</b>
+<small>Open service →</small>
+</a>
+
+<a class="vx-dash-card" href="https://112.gov.in/" target="_blank" rel="noopener noreferrer">
+<span class="i">🚑</span>
+<b>Emergency 112</b>
+<small>Open service →</small>
+</a>
+
+<a class="vx-dash-card" href="https://www.nhp.gov.in/" target="_blank" rel="noopener noreferrer">
+<span class="i">🧑‍⚕️</span>
+<b>National Health Portal</b>
+<small>Open service →</small>
+</a>
+
+</div>
+
+</section>
+
+
+<style id="vx-service-dashboard">
+.vx-dash{max-width:1100px;margin:20px auto;padding:15px}
+.vx-dash-head{background:#172554;color:white;padding:25px;border-radius:25px;margin-bottom:15px}
+.vx-dash-head h1{margin:5px 0}
+.vx-dash-search{width:100%;padding:15px;border:0;border-radius:18px;font-size:16px;margin:12px 0 18px}
+.vx-dash-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.vx-dash-card{background:#1e293b;color:white;text-decoration:none;padding:20px;border-radius:20px;min-height:115px;display:flex;flex-direction:column;justify-content:center;transition:.2s}
+.vx-dash-card:hover{transform:translateY(-3px)}
+.vx-dash-card .i{font-size:32px}
+.vx-dash-card b{font-size:17px;margin-top:7px}
+.vx-dash-card small{opacity:.7;margin-top:4px}
+@media(min-width:700px){.vx-dash-grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+
+
+<script>
+(function(){
+const input=document.getElementById("vxDashSearch");
+const cards=document.querySelectorAll(".vx-dash-card");
+
+if(input){
+input.addEventListener("input",function(){
+const q=this.value.toLowerCase().trim();
+
+cards.forEach(function(card){
+card.style.display=
+(!q || card.innerText.toLowerCase().includes(q))
+?"":"none";
+});
+});
+}
+})();
+</script>
+<!-- VX-SERVICE-DASH-END -->
+
 </body>
 </html>
