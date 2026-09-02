@@ -60,21 +60,8 @@ text-decoration:none;
 <button id="logout">Logout</button>
 </div>
 
-<script src="Js/auth.js"></script>
-<script>
-const user=VXAuth.get();
 
-if(user){
- document.getElementById("name").textContent=user.name;
- document.getElementById("email").textContent=user.email;
- document.getElementById("avatar").textContent=
-   (user.name||"V").charAt(0).toUpperCase();
-}
 
-document.getElementById("logout").onclick=function(){
- VXAuth.logout();
-};
-</script>
 
 </body>
 </html>
