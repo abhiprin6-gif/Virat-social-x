@@ -236,6 +236,68 @@ a,button{
   },true);
 })();
 </script>
+
+<style id="VIRAT-LINK-FIX">
+html,body{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  overflow:auto!important;
+}
+#loader,#loading,#splash,.loader,.loading,.splash,
+.vx-loader,.vx-loading,.vx-splash{
+  display:none!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+a,button{
+  pointer-events:auto!important;
+  position:relative;
+  z-index:10000;
+}
+</style>
+
+<script id="VIRAT-LINK-FIX-JS">
+(function(){
+  // Kisi invisible overlay ko clicks block nahi karne dena
+  function fix(){
+    document.documentElement.style.pointerEvents='auto';
+    document.body.style.pointerEvents='auto';
+
+    document.querySelectorAll(
+      '#loader,#loading,#splash,.loader,.loading,.splash,.vx-loader,.vx-loading,.vx-splash'
+    ).forEach(function(e){
+      e.style.display='none';
+      e.style.pointerEvents='none';
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded',fix);
+  window.addEventListener('load',fix);
+  setTimeout(fix,500);
+  setTimeout(fix,1500);
+
+  // Internal links ko normal navigation dena
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a');
+    if(!a) return;
+
+    var href=a.getAttribute('href');
+    if(!href || href==='#' || href.startsWith('javascript:')) return;
+
+    // Existing page links ko kisi JS handler se block na hone do
+    if(
+      href.endsWith('.html') ||
+      href.startsWith('./') ||
+      href.startsWith('../') ||
+      href.startsWith('pages/')
+    ){
+      e.stopImmediatePropagation();
+    }
+  },true);
+})();
+</script>
 </head>
 <body>
 
