@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VIRAT SOCIAL X - Global Search</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0f172a;color:#fff;font-family:Arial,sans-serif}
+header{padding:25px 16px;text-align:center;background:#111827;position:sticky;top:0;z-index:10}
+h1{margin:0 0 8px}
+.search{width:100%;max-width:700px;padding:15px 18px;border:0;border-radius:30px;font-size:17px;outline:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px;padding:18px}
+.card{background:#1e293b;border:1px solid #334155;border-radius:18px;padding:18px;transition:.2s}
+.card:hover{transform:translateY(-3px)}
+.card h2{margin:0 0 8px;font-size:19px}
+.card p{color:#cbd5e1}
+.btn{display:inline-block;background:#2563eb;color:#fff;text-decoration:none;padding:11px 16px;border-radius:11px;font-weight:bold}
+.empty{text-align:center;padding:30px;color:#94a3b8;display:none}
+.home{display:block;text-align:center;padding:25px;color:#fff}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🔎 VIRAT SOCIAL X</h1>
+<p>All Services Global Search</p>
+<input class="search" id="search" placeholder="Search Government, Jobs, Sports, Hospital..." autocomplete="off">
+</header>
+
+<div class="grid" id="grid">
+
+<div class="card"><h2>🏛️ Government</h2><p>Aadhaar, PAN, DigiLocker, schemes</p><a class="btn" href="government.html">Open</a></div>
+
+<div class="card"><h2>💼 Jobs</h2><p>Government jobs, SSC, Railway, NCS</p><a class="btn" href="jobs.html">Open</a></div>
+
+<div class="card"><h2>📚 Education</h2><p>NCERT, NTA, scholarships and learning</p><a class="btn" href="education.html">Open</a></div>
+
+<div class="card"><h2>🏥 Hospital</h2><p>Health services, ABDM and eSanjeevani</p><a class="btn" href="hospital.html">Open</a></div>
+
+<div class="card"><h2>🚨 Emergency</h2><p>Police, ambulance, fire and blood services</p><a class="btn" href="emergency.html">Open</a></div>
+
+<div class="card"><h2>🏏 Sports</h2><p>Cricket, Olympics, FIFA and sports updates</p><a class="btn" href="sports.html">Open</a></div>
+
+<div class="card"><h2>📰 News</h2><p>PIB, DD News and government updates</p><a class="btn" href="news.html">Open</a></div>
+
+<div class="card"><h2>⚖️ Legal</h2><p>eCourts, India Code and legal services</p><a class="btn" href="legal.html">Open</a></div>
+
+<div class="card"><h2>💰 Business</h2><p>MSME, Udyam, Startup India and MUDRA</p><a class="btn" href="business.html">Open</a></div>
+
+<div class="card"><h2>📍 Nearby</h2><p>Maps, banks, hospitals and petrol pumps</p><a class="btn" href="nearby.html">Open</a></div>
+
+<div class="card"><h2>🌐 Browser</h2><p>Google, YouTube, Gmail, Maps and Translate</p><a class="btn" href="browser.html">Open</a></div>
+
+<div class="card"><h2>🧮 Calculator</h2><p>Percentage, EMI, finance and calculations</p><a class="btn" href="calculator.html">Open</a></div>
+
+<div class="card"><h2>⚡ Heavy Tools</h2><p>Useful online tools dashboard</p><a class="btn" href="tools.html">Open</a></div>
+
+<div class="card"><h2>🚀 Pro Tools</h2><p>Advanced calculators and utilities</p><a class="btn" href="tools-pro.html">Open</a></div>
+
+<div class="card"><h2>🧰 Extra Tools</h2><p>GST, BMI, QR, JSON and more</p><a class="btn" href="tools-extra.html">Open</a></div>
+
+</div>
+
+<div class="empty" id="empty">😕 कोई service नहीं मिली</div>
+
+<a class="home" href="../index.html">🏠 Back to Home</a>
+
+<script>
+const input=document.getElementById("search");
+const cards=[...document.querySelectorAll(".card")];
+const empty=document.getElementById("empty");
+
+input.addEventListener("input",()=>{
+ const q=input.value.trim().toLowerCase();
+ let count=0;
+
+ cards.forEach(card=>{
+   const match=card.innerText.toLowerCase().includes(q);
+   card.style.display=match?"block":"none";
+   if(match)count++;
+ });
+
+ empty.style.display=count?"none":"block";
+});
+</script>
+
+</body>
+</html>
