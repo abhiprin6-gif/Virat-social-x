@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VIRAT SOCIAL X - Pro Tools</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0f172a;color:#fff;font-family:Arial,sans-serif}
+header{background:#111827;padding:20px;text-align:center;position:sticky;top:0;z-index:5}
+h1{margin:0 0 8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px;padding:18px}
+.card{background:#1e293b;border:1px solid #334155;border-radius:18px;padding:18px}
+input,textarea,select{width:100%;padding:12px;margin:7px 0;border:0;border-radius:10px;font-size:16px}
+button{border:0;padding:11px 16px;border-radius:10px;background:#2563eb;color:#fff;font-weight:bold;margin:4px;cursor:pointer}
+.result{background:#0b1220;padding:12px;border-radius:10px;margin-top:8px;min-height:20px;word-break:break-word}
+.back{display:block;text-align:center;padding:20px;color:#fff}
+</style>
+</head>
+<body>
+
+<header>
+<h1>⚡ VIRAT SOCIAL X</h1>
+<p>PRO TOOLS CENTER</p>
+</header>
+
+<div class="grid">
+
+<div class="card">
+<h2>🧮 Percentage</h2>
+<input id="p1" type="number" placeholder="Obtained">
+<input id="p2" type="number" placeholder="Total">
+<button onclick="percent()">Calculate</button>
+<div class="result" id="pr"></div>
+</div>
+
+<div class="card">
+<h2>💰 EMI Calculator</h2>
+<input id="loan" type="number" placeholder="Loan Amount">
+<input id="rate" type="number" placeholder="Annual Interest %">
+<input id="months" type="number" placeholder="Months">
+<button onclick="emi()">Calculate EMI</button>
+<div class="result" id="er"></div>
+</div>
+
+<div class="card">
+<h2>🔢 Unit Converter</h2>
+<input id="unit" type="number" placeholder="Value">
+<select id="type">
+<option value="kmmi">Kilometre → Mile</option>
+<option value="mft">Metre → Feet</option>
+<option value="kg">Kilogram → Pound</option>
+<option value="cf">Celsius → Fahrenheit</option>
+</select>
+<button onclick="convert()">Convert</button>
+<div class="result" id="ur"></div>
+</div>
+
+<div class="card">
+<h2>🔐 Password Generator</h2>
+<input id="len" type="number" value="16" min="4" max="64">
+<button onclick="password()">Generate</button>
+<div class="result" id="pw"></div>
+</div>
+
+<div class="card">
+<h2>📝 Text Counter</h2>
+<textarea id="txt" rows="5" placeholder="Write or paste text..." oninput="countText()"></textarea>
+<div class="result" id="tc">Words: 0 | Characters: 0</div>
+</div>
+
+<div class="card">
+<h2>📋 Text Case</h2>
+<textarea id="caseText" rows="4" placeholder="Enter text"></textarea>
+<button onclick="upper()">UPPERCASE</button>
+<button onclick="lower()">lowercase</button>
+<button onclick="copyCase()">Copy</button>
+</div>
+
+<div class="card">
+<h2>⏱️ Stopwatch</h2>
+<div class="result" id="timer">00:00:00</div>
+<button onclick="startTimer()">Start</button>
+<button onclick="stopTimer()">Stop</button>
+<button onclick="resetTimer()">Reset</button>
+</div>
+
+<div class="card">
+<h2>🎲 Random Number</h2>
+<input id="min" type="number" value="1" placeholder="Minimum">
+<input id="max" type="number" value="100" placeholder="Maximum">
+<button onclick="randomNo()">Generate</button>
+<div class="result" id="rr"></div>
+</div>
+
+</div>
+
+<a class="back" href="../index.html">🏠 Back to VIRAT SOCIAL X</a>
+
+<script>
+function percent(){
+ let a=+p1.value,b=+p2.value;
+ pr.innerText=b?((a/b)*100).toFixed(2)+"%":"Enter valid numbers";
+}
+
+function emi(){
+ let P=+loan.value,R=+rate.value/1200,N=+months.value;
+ if(!P||!N){er.innerText="Enter valid details";return}
+ let E=R?P*R*Math.pow(1+R,N)/(Math.pow(1+R,N)-1):P/N;
+ er.innerText="Monthly EMI: ₹"+E.toFixed(2);
+}
+
+function convert(){
+ let v=+unit.value,t=type.value,r=0;
+ if(t=="kmmi")r=v*0.621371;
+ if(t=="mft")r=v*3.28084;
+ if(t=="kg")r=v*2.20462;
+ if(t=="cf")r=(v*9/5)+32;
+ ur.innerText=r.toFixed(4);
+}
+
+function password(){
+ let n=Math.min(64,Math.max(4,+len.value||16));
+ let chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+ let out="";
+ for(let i=0;i<n;i++)out+=chars[Math.floor(Math.random()*chars.length)];
+ pw.innerText=out;
+}
+
+function countText(){
+ let x=txt.value;
+ let w=x.trim()?x.trim().split(/\s+/).length:0;
+ tc.innerText="Words: "+w+" | Characters: "+x.length;
+}
+
+function upper(){caseText.value=caseText.value.toUpperCase()}
+function lower(){caseText.value=caseText.value.toLowerCase()}
+function copyCase(){navigator.clipboard.writeText(caseText.value)}
+
+let sec=0,run=false,id;
+function showTime(){
+ let h=String(Math.floor(sec/3600)).padStart(2,"0");
+ let m=String(Math.floor(sec%3600/60)).padStart(2,"0");
+ let s=String(sec%60).padStart(2,"0");
+ timer.innerText=h+":"+m+":"+s;
+}
+function startTimer(){
+ if(run)return;
+ run=true;
+ id=setInterval(()=>{sec++;showTime()},1000);
+}
+function stopTimer(){run=false;clearInterval(id)}
+function resetTimer(){stopTimer();sec=0;showTime()}
+
+function randomNo(){
+ let a=+min.value,b=+max.value;
+ if(a>b)[a,b]=[b,a];
+ rr.innerText=Math.floor(Math.random()*(b-a+1))+a;
+}
+</script>
+
+</body>
+</html>
