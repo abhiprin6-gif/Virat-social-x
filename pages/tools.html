@@ -1,95 +1,173 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VIRAT SOCIAL X - All Tools</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>VIRAT X - Smart Tools</title>
+<link rel="stylesheet" href="../assets/css/vx-core.css">
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#0f172a;color:#fff}
-header{padding:20px;background:#111827;text-align:center}
-h1{margin:0 0 8px}
-.search{width:92%;max-width:700px;padding:14px;border:0;border-radius:30px;font-size:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;padding:20px}
-.card{background:#1e293b;border:1px solid #334155;border-radius:18px;padding:18px}
-.card h2{margin-top:0;font-size:19px}
-.card p{color:#cbd5e1}
-.btn{display:inline-block;background:#2563eb;color:white;text-decoration:none;padding:11px 15px;border-radius:12px;margin-top:8px}
-.btn:hover{background:#1d4ed8}
-.home{display:block;text-align:center;padding:15px}
+.toolbox{width:min(1100px,94%);margin:25px auto}
+.toolhead{padding:25px;border-radius:24px;background:#101e32;border:1px solid #263852;text-align:center}
+.toolhead h1{font-size:32px;margin-bottom:8px}
+.toolhead p{color:#94a3b8}
+.toolsearch{width:100%;margin-top:18px;padding:14px;border-radius:14px;border:1px solid #334155;background:#07111f;color:#fff;outline:none}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:20px}
+.tool{padding:22px;border-radius:20px;background:#0d1a2c;border:1px solid #263852}
+.tool h3{margin:8px 0}
+.tool p{color:#94a3b8;font-size:13px;line-height:1.5}
+.tool button,.tool a{display:inline-block;margin-top:12px;padding:10px 14px;border:0;border-radius:12px;background:#2563eb;color:#fff;cursor:pointer}
+.result{margin-top:12px;color:#60a5fa;font-weight:bold}
 </style>
+</head>
 <body>
 
-<header>
-<h1>⚡ VIRAT SOCIAL X</h1>
-<p>All-in-One Useful Tools & Services</p>
-<input class="search" id="search" placeholder="🔎 Search service..." oninput="findTools()">
-</header>
-
-<div class="grid" id="tools">
-
-<div class="card"><h2>🏛️ Government</h2><p>Aadhaar, PAN, DigiLocker, schemes</p>
-<a class="btn" href="government.html">Open</a></div>
-
-<div class="card"><h2>💼 Jobs</h2><p>Government & private job portals</p>
-<a class="btn" href="jobs.html">Open</a></div>
-
-<div class="card"><h2>📚 Education</h2><p>NCERT, NTA, scholarships & learning</p>
-<a class="btn" href="education.html">Open</a></div>
-
-<div class="card"><h2>🏥 Health</h2><p>Health services & emergency support</p>
-<a class="btn" href="hospital.html">Open</a></div>
-
-<div class="card"><h2>🚨 Emergency</h2><p>Police, ambulance, fire & blood services</p>
-<a class="btn" href="emergency.html">Open</a></div>
-
-<div class="card"><h2>🏏 Sports</h2><p>Cricket, Olympics, FIFA & more</p>
-<a class="btn" href="sports.html">Open</a></div>
-
-<div class="card"><h2>📰 News</h2><p>Official news & government updates</p>
-<a class="btn" href="news.html">Open</a></div>
-
-<div class="card"><h2>⚖️ Legal</h2><p>eCourts, India Code & legal services</p>
-<a class="btn" href="legal.html">Open</a></div>
-
-<div class="card"><h2>💰 Business</h2><p>MSME, Udyam, Startup & business services</p>
-<a class="btn" href="business.html">Open</a></div>
-
-<div class="card"><h2>📍 Nearby</h2><p>Maps, hospitals, banks & services</p>
-<a class="btn" href="nearby.html">Open</a></div>
-
-<div class="card"><h2>🌐 Browser</h2><p>Useful web shortcuts</p>
-<a class="btn" href="browser.html">Open</a></div>
-
-<div class="card"><h2>🧮 Calculator</h2><p>Percentage, EMI, finance & calculations</p>
-<a class="btn" href="calculator.html">Open</a></div>
-
+<div class="toolbox">
+<div class="toolhead">
+<h1>🧰 VIRAT X SMART TOOLS</h1>
+<p>Fast • Free • Mobile Friendly</p>
+<input id="toolSearch" class="toolsearch" placeholder="🔍 Search tools...">
 </div>
 
-<a class="home" href="../index.html">🏠 Back to Home</a>
+<div class="tools">
+
+<div class="tool">
+<h3>📊 Percentage</h3>
+<p>Calculate percentage instantly.</p>
+<input id="perA" type="number" placeholder="Value" style="width:100%;padding:10px">
+<input id="perB" type="number" placeholder="Total" style="width:100%;padding:10px;margin-top:6px">
+<button onclick="percentage()">Calculate</button>
+<div id="perR" class="result"></div>
+</div>
+
+<div class="tool">
+<h3>🧮 GST Calculator</h3>
+<p>Calculate GST amount and total.</p>
+<input id="gstA" type="number" placeholder="Amount" style="width:100%;padding:10px">
+<input id="gstB" type="number" placeholder="GST %" style="width:100%;padding:10px;margin-top:6px">
+<button onclick="gst()">Calculate</button>
+<div id="gstR" class="result"></div>
+</div>
+
+<div class="tool">
+<h3>💰 EMI Calculator</h3>
+<p>Estimate monthly loan EMI.</p>
+<input id="emiP" type="number" placeholder="Loan Amount" style="width:100%;padding:10px">
+<input id="emiR" type="number" placeholder="Interest %" style="width:100%;padding:10px;margin-top:6px">
+<input id="emiN" type="number" placeholder="Months" style="width:100%;padding:10px;margin-top:6px">
+<button onclick="emi()">Calculate</button>
+<div id="emiOut" class="result"></div>
+</div>
+
+<div class="tool">
+<h3>🔢 BMI Calculator</h3>
+<p>Calculate BMI from height and weight.</p>
+<input id="bmiW" type="number" placeholder="Weight kg" style="width:100%;padding:10px">
+<input id="bmiH" type="number" placeholder="Height cm" style="width:100%;padding:10px;margin-top:6px">
+<button onclick="bmi()">Calculate</button>
+<div id="bmiR" class="result"></div>
+</div>
+
+<div class="tool">
+<h3>🎲 Random Number</h3>
+<p>Generate a random number.</p>
+<button onclick="randomNo()">Generate</button>
+<div id="randomR" class="result"></div>
+</div>
+
+<div class="tool">
+<h3>🔤 Text Counter</h3>
+<p>Count characters and words.</p>
+<textarea id="counter" placeholder="Type or paste text..." style="width:100%;height:80px;padding:10px"></textarea>
+<div id="countR" class="result"></div>
+</div>
+
+<div class="tool">
+<h3>🔠 Text Case</h3>
+<p>Convert text to upper/lower case.</p>
+<textarea id="caseText" placeholder="Enter text..." style="width:100%;height:80px;padding:10px"></textarea>
+<button onclick="upper()">UPPER</button>
+<button onclick="lower()">lower</button>
+</div>
+
+<div class="tool">
+<h3>⏱️ Stopwatch</h3>
+<p>Simple online stopwatch.</p>
+<div id="watch" class="result">00:00:00</div>
+<button onclick="startWatch()">Start</button>
+<button onclick="stopWatch()">Stop</button>
+<button onclick="resetWatch()">Reset</button>
+</div>
+
+<div class="tool">
+<h3>🎯 Quick Search</h3>
+<p>Search Google instantly.</p>
+<a href="https://www.google.com/search?q=" target="_blank">Google Search</a>
+</div>
+
+<div class="tool">
+<h3>📱 QR Generator</h3>
+<p>Create a QR code from text or link.</p>
+<input id="qrText" placeholder="Text or URL" style="width:100%;padding:10px">
+<button onclick="makeQR()">Generate QR</button>
+<div id="qrR" style="margin-top:12px"></div>
+</div>
+
+</div>
+</div>
 
 <script>
-function findTools(){
- let q=document.getElementById("search").value.toLowerCase();
- document.querySelectorAll(".card").forEach(c=>{
-   c.style.display=c.innerText.toLowerCase().includes(q)?"block":"none";
- });
+function percentage(){
+let a=+document.getElementById("perA").value,b=+document.getElementById("perB").value;
+document.getElementById("perR").innerText=b?(a/b*100).toFixed(2)+"%":"Enter values";
 }
+function gst(){
+let a=+document.getElementById("gstA").value,b=+document.getElementById("gstB").value;
+let g=a*b/100;
+document.getElementById("gstR").innerText="GST: ₹"+g.toFixed(2)+" | Total: ₹"+(a+g).toFixed(2);
+}
+function emi(){
+let p=+document.getElementById("emiP").value,r=+document.getElementById("emiR").value/1200,n=+document.getElementById("emiN").value;
+let e=r? p*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):p/n;
+document.getElementById("emiOut").innerText="EMI: ₹"+e.toFixed(2);
+}
+function bmi(){
+let w=+document.getElementById("bmiW").value,h=+document.getElementById("bmiH").value/100;
+document.getElementById("bmiR").innerText=h?"BMI: "+(w/(h*h)).toFixed(2):"Enter height";
+}
+function randomNo(){document.getElementById("randomR").innerText=Math.floor(Math.random()*100000)+1}
+document.getElementById("counter").addEventListener("input",function(){
+let t=this.value;
+document.getElementById("countR").innerText="Characters: "+t.length+" | Words: "+(t.trim()?t.trim().split(/\s+/).length:0);
+});
+function upper(){document.getElementById("caseText").value=document.getElementById("caseText").value.toUpperCase()}
+function lower(){document.getElementById("caseText").value=document.getElementById("caseText").value.toLowerCase()}
+
+let sec=0,timer=null;
+function showWatch(){
+let h=String(Math.floor(sec/3600)).padStart(2,"0");
+let m=String(Math.floor(sec%3600/60)).padStart(2,"0");
+let s=String(sec%60).padStart(2,"0");
+document.getElementById("watch").innerText=h+":"+m+":"+s;
+}
+function startWatch(){if(!timer)timer=setInterval(function(){sec++;showWatch()},1000)}
+function stopWatch(){clearInterval(timer);timer=null}
+function resetWatch(){stopWatch();sec=0;showWatch()}
+
+function makeQR(){
+let t=encodeURIComponent(document.getElementById("qrText").value);
+document.getElementById("qrR").innerHTML=t?
+'<img style="max-width:200px;border-radius:12px" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data='+t+'">':
+"Enter text or URL";
+}
+
+document.getElementById("toolSearch").addEventListener("input",function(){
+let q=this.value.toLowerCase();
+document.querySelectorAll(".tool").forEach(function(x){
+x.style.display=(!q||x.innerText.toLowerCase().includes(q))?"block":"none";
+});
+});
 </script>
 
+<script src="../assets/js/vx-core.js"></script>
+</body>
 </html>
-
-
-
-<!-- VX-RECENT-START -->
-<script>
-(function(){
- const key="tools";
- let a=JSON.parse(localStorage.getItem("vxRecent")||"[]");
- a=a.filter(x=>x!==key);
- a.unshift(key);
- a=a.slice(0,10);
- localStorage.setItem("vxRecent",JSON.stringify(a));
-})();
-</script>
-<!-- VX-RECENT-END -->
