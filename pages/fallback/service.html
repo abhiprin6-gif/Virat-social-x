@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VIRAT SOCIAL X - Service</title>
+<link rel="stylesheet" href="../../assets/css/vx-core.css">
+<link rel="stylesheet" href="../../assets/css/vx-wallpaper.css">
+</head>
+<body>
+<main class="vx-grid">
+<div class="vx-card">
+<h1 id="serviceTitle">🌐 VIRAT X Service</h1>
+<p id="serviceText">Service page is ready.</p>
+<a class="vx-btn" href="../../index.html">🏠 Home</a>
+</div>
+</main>
+<script src="../../assets/js/vx-core.js"></script>
+<script src="../../assets/js/vx-wallpaper.js"></script>
+<script>
+var q=new URLSearchParams(location.search);
+var n=q.get("name");
+if(n){
+document.getElementById("serviceTitle").innerText="🌐 "+n;
+document.getElementById("serviceText").innerText=n+" service is available in VIRAT SOCIAL X.";
+document.title="VIRAT X - "+n;
+}
+</script>
+</body>
+</html>
