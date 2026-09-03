@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VIRAT SOCIAL X - Favorites</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0f172a;color:#fff;font-family:Arial,sans-serif}
+header{background:#111827;padding:22px;text-align:center;position:sticky;top:0;z-index:5}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px;padding:18px}
+.card{background:#1e293b;border:1px solid #334155;border-radius:18px;padding:18px}
+a,button{display:inline-block;padding:11px 14px;border:0;border-radius:11px;text-decoration:none;color:#fff;background:#2563eb;margin:4px;font-weight:bold}
+.del{background:#dc2626}
+.empty{text-align:center;padding:30px;color:#94a3b8}
+</style>
+</head>
+<body>
+
+<header>
+<h1>⭐ VIRAT SOCIAL X</h1>
+<p>Favorites & Recent Services</p>
+</header>
+
+div class="grid" id="list"></div>
+
+<div class="empty" id="empty">⭐ अभी कोई Favorite नहीं है</div>
+
+<div style="text-align:center;padding:20px">
+<button onclick="clearAll()" class="del">🗑️ Clear Favorites</button>
+<a href="../index.html">🏠 Home</a>
+<a href="global-search.html">🔎 Search</a>
+</div>
+
+<script>
+const defaultServices=[
+["Government","🏛️","government.html"],
+["Jobs","💼","jobs.html"],
+["Education","📚","education.html"],
+["Hospital","🏥","hospital.html"],
+["Emergency","🚨","emergency.html"],
+["Sports","🏏","sports.html"],
+["News","📰","news.html"],
+["Legal","⚖️","legal.html"],
+["Business","💰","business.html"],
+["Nearby","📍","nearby.html"],
+["Browser","🌐","browser.html"],
+["Calculator","🧮","calculator.html"],
+["Heavy Tools","⚡","tools.html"],
+["Pro Tools","🚀","tools-pro.html"],
+["Extra Tools","🧰","tools-extra.html"]
+];
+
+let fav=JSON.parse(localStorage.getItem("vxFavorites")||"[]");
+
+function render(){
+ const list=document.getElementById("list");
+ list.innerHTML="";
+ document.getElementById("empty").style.display=fav.length?"none":"block";
+
+ fav.forEach(name=>{
+   const x=defaultServices.find(a=>a[0]===name);
+   if(!x)return;
+   list.innerHTML+=`
+   <div class="card">
+    <h2>${x[1]} ${x[0]}</h2>
+    <a href="${x[2]}">🚀 Open</a>
+    <button class="del" onclick="removeFav('${x[0]}')">✕ Remove</button>
+   </div>`;
+ });
+}
+
+function removeFav(name){
+ fav=fav.filter(x=>x!==name);
+ localStorage.setItem("vxFavorites",JSON.stringify(fav));
+ render();
+}
+
+function clearAll(){
+ if(confirm("सभी Favorites हटाएँ?")){
+  localStorage.removeItem("vxFavorites");
+  fav=[];
+  render();
+ }
+}
+
+render();
+</script>
+</body>
+</html>
