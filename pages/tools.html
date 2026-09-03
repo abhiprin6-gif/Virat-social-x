@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VIRAT SOCIAL X - All Tools</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#0f172a;color:#fff}
+header{padding:20px;background:#111827;text-align:center}
+h1{margin:0 0 8px}
+.search{width:92%;max-width:700px;padding:14px;border:0;border-radius:30px;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;padding:20px}
+.card{background:#1e293b;border:1px solid #334155;border-radius:18px;padding:18px}
+.card h2{margin-top:0;font-size:19px}
+.card p{color:#cbd5e1}
+.btn{display:inline-block;background:#2563eb;color:white;text-decoration:none;padding:11px 15px;border-radius:12px;margin-top:8px}
+.btn:hover{background:#1d4ed8}
+.home{display:block;text-align:center;padding:15px}
+</style>
+</head>
+<body>
+
+<header>
+<h1>⚡ VIRAT SOCIAL X</h1>
+<p>All-in-One Useful Tools & Services</p>
+<input class="search" id="search" placeholder="🔎 Search service..." oninput="findTools()">
+</header>
+
+<div class="grid" id="tools">
+
+<div class="card"><h2>🏛️ Government</h2><p>Aadhaar, PAN, DigiLocker, schemes</p>
+<a class="btn" href="government.html">Open</a></div>
+
+<div class="card"><h2>💼 Jobs</h2><p>Government & private job portals</p>
+<a class="btn" href="jobs.html">Open</a></div>
+
+<div class="card"><h2>📚 Education</h2><p>NCERT, NTA, scholarships & learning</p>
+<a class="btn" href="education.html">Open</a></div>
+
+<div class="card"><h2>🏥 Health</h2><p>Health services & emergency support</p>
+<a class="btn" href="hospital.html">Open</a></div>
+
+<div class="card"><h2>🚨 Emergency</h2><p>Police, ambulance, fire & blood services</p>
+<a class="btn" href="emergency.html">Open</a></div>
+
+<div class="card"><h2>🏏 Sports</h2><p>Cricket, Olympics, FIFA & more</p>
+<a class="btn" href="sports.html">Open</a></div>
+
+<div class="card"><h2>📰 News</h2><p>Official news & government updates</p>
+<a class="btn" href="news.html">Open</a></div>
+
+<div class="card"><h2>⚖️ Legal</h2><p>eCourts, India Code & legal services</p>
+<a class="btn" href="legal.html">Open</a></div>
+
+<div class="card"><h2>💰 Business</h2><p>MSME, Udyam, Startup & business services</p>
+<a class="btn" href="business.html">Open</a></div>
+
+<div class="card"><h2>📍 Nearby</h2><p>Maps, hospitals, banks & services</p>
+<a class="btn" href="nearby.html">Open</a></div>
+
+<div class="card"><h2>🌐 Browser</h2><p>Useful web shortcuts</p>
+<a class="btn" href="browser.html">Open</a></div>
+
+<div class="card"><h2>🧮 Calculator</h2><p>Percentage, EMI, finance & calculations</p>
+<a class="btn" href="calculator.html">Open</a></div>
+
+</div>
+
+<a class="home" href="../index.html">🏠 Back to Home</a>
+
+<script>
+function findTools(){
+ let q=document.getElementById("search").value.toLowerCase();
+ document.querySelectorAll(".card").forEach(c=>{
+   c.style.display=c.innerText.toLowerCase().includes(q)?"block":"none";
+ });
+}
+</script>
+
+</body>
+</html>
