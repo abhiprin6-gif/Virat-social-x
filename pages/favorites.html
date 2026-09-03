@@ -88,3 +88,16 @@ render();
 </script>
 </body>
 </html>
+
+<!-- VX-RECENT-START -->
+<script>
+(function(){
+ const key="favorites";
+ let a=JSON.parse(localStorage.getItem("vxRecent")||"[]");
+ a=a.filter(x=>x!==key);
+ a.unshift(key);
+ a=a.slice(0,10);
+ localStorage.setItem("vxRecent",JSON.stringify(a));
+})();
+</script>
+<!-- VX-RECENT-END -->

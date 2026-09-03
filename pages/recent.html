@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VIRAT SOCIAL X - Recent</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0f172a;color:#fff;font-family:Arial,sans-serif}
+header{background:#111827;padding:22px;text-align:center;position:sticky;top:0;z-index:5}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px;padding:18px}
+.card{background:#1e293b;border:1px solid #334155;border-radius:18px;padding:18px}
+a,button{display:inline-block;padding:11px 15px;border:0;border-radius:11px;text-decoration:none;color:#fff;background:#2563eb;margin:4px;font-weight:bold}
+.clear{background:#dc2626}
+.empty{text-align:center;padding:30px;color:#94a3b8}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🕘 VIRAT SOCIAL X</h1>
+<p>Recently Opened Services</p>
+</header>
+
+<div class="grid" id="list"></div>
+<div class="empty" id="empty">🕘 अभी कोई Recent Service नहीं है</div>
+
+<div style="text-align:center;padding:20px">
+<button class="clear" onclick="clearRecent()">🗑️ Clear Recent</button>
+<a href="../index.html">🏠 Home</a>
+<a href="global-search.html">🔎 Search</a>
+<a href="favorites.html">⭐ Favorites</a>
+</div>
+
+<script>
+const services={
+government:["🏛️","Government","government.html"],
+jobs:["💼","Jobs","jobs.html"],
+education:["📚","Education","education.html"],
+hospital:["🏥","Hospital","hospital.html"],
+emergency:["🚨","Emergency","emergency.html"],
+sports:["🏏","Sports","sports.html"],
+news:["📰","News","news.html"],
+legal:["⚖️","Legal","legal.html"],
+business:["💰","Business","business.html"],
+nearby:["📍","Nearby","nearby.html"],
+browser:["🌐","Browser","browser.html"],
+calculator:["🧮","Calculator","calculator.html"],
+tools:["⚡","Heavy Tools","tools.html"],
+"tools-pro":["🚀","Pro Tools","tools-pro.html"],
+"tools-extra":["🧰","Extra Tools","tools-extra.html"],
+"global-search":["🔎","Global Search","global-search.html"]
+};
+
+let recent=JSON.parse(localStorage.getItem("vxRecent")||"[]");
+
+function render(){
+ const box=document.getElementById("list");
+ box.innerHTML="";
+ document.getElementById("empty").style.display=recent.length?"none":"block";
+
+ recent.forEach(key=>{
+  let x=services[key];
+  if(!x)return;
+  box.innerHTML+=`
+  <div class="card">
+   <h2>${x[0]} ${x[1]}</h2>
+   <a href="${x[2]}">🚀 Open</a>
+  </div>`;
+ });
+}
+
+function clearRecent(){
+ localStorage.removeItem("vxRecent");
+ recent=[];
+ render();
+}
+
+render();
+</script>
+</body>
+</html>
+
+<!-- VX-RECENT-START -->
+<script>
+(function(){
+ const key="recent";
+ let a=JSON.parse(localStorage.getItem("vxRecent")||"[]");
+ a=a.filter(x=>x!==key);
+ a.unshift(key);
+ a=a.slice(0,10);
+ localStorage.setItem("vxRecent",JSON.stringify(a));
+})();
+</script>
+<!-- VX-RECENT-END -->
