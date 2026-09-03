@@ -1,0 +1,119 @@
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+font-family:Arial,sans-serif;
+background:#07111f;
+color:#fff;
+min-height:100vh;
+padding-bottom:70px
+}
+a{text-decoration:none;color:inherit}
+.vx-nav{
+position:sticky;top:0;z-index:9999;
+display:flex;align-items:center;gap:8px;
+padding:10px;
+background:rgba(7,17,31,.96);
+backdrop-filter:blur(12px);
+border-bottom:1px solid #26354a;
+overflow-x:auto
+}
+.vx-nav a{
+white-space:nowrap;
+padding:9px 13px;
+border-radius:999px;
+background:#132238;
+font-size:13px;
+transition:.2s
+}
+.vx-nav a:hover{background:#2563eb;transform:translateY(-1px)}
+.vx-brand{
+font-weight:800;
+font-size:17px;
+background:linear-gradient(90deg,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+color:transparent;
+margin-right:5px
+}
+.vx-search{
+width:min(600px,92%);
+margin:18px auto;
+display:block;
+padding:13px 16px;
+border:1px solid #334155;
+border-radius:14px;
+background:#101d30;
+color:#fff;
+outline:none
+}
+.vx-search:focus{border-color:#60a5fa}
+.vx-grid{
+width:min(1200px,94%);
+margin:20px auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px
+}
+.vx-card{
+display:block;
+padding:20px;
+background:linear-gradient(145deg,#101e32,#0c1728);
+border:1px solid #263852;
+border-radius:20px;
+box-shadow:0 8px 25px rgba(0,0,0,.22);
+transition:.22s
+}
+.vx-card:hover{
+transform:translateY(-4px);
+border-color:#3b82f6;
+box-shadow:0 12px 30px rgba(37,99,235,.2)
+}
+.vx-card h3{margin-bottom:8px}
+.vx-card p{color:#aab8ca;font-size:13px;line-height:1.5}
+.vx-btn{
+display:inline-block;
+margin-top:12px;
+padding:10px 15px;
+border:0;
+border-radius:12px;
+background:#2563eb;
+color:#fff;
+cursor:pointer
+}
+.vx-empty{text-align:center;padding:40px;color:#94a3b8}
+.vx-top{
+position:fixed;
+right:16px;
+bottom:18px;
+z-index:9998;
+border:0;
+border-radius:50%;
+width:48px;height:48px;
+background:#2563eb;
+color:#fff;
+font-size:20px;
+box-shadow:0 8px 25px rgba(0,0,0,.35);
+cursor:pointer
+}
+.vx-fav{
+float:right;
+border:0;
+background:transparent;
+color:#94a3b8;
+font-size:21px;
+cursor:pointer
+}
+.vx-fav.active{color:#facc15}
+.vx-highlight{
+outline:3px solid #60a5fa;
+animation:vxflash 1s
+}
+@keyframes vxflash{
+0%{transform:scale(1.03)}
+100%{transform:scale(1)}
+}
+@media(max-width:600px){
+.vx-grid{grid-template-columns:1fr}
+.vx-card{padding:17px}
+.vx-nav{padding:8px}
+.vx-nav a{font-size:12px;padding:8px 11px}
+}
