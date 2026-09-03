@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://abhiprin6-gif.github.io/Virat-social-x/sitemap.xml
