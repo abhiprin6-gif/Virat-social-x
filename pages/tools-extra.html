@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VIRAT SOCIAL X - Extra Tools</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0f172a;color:#fff;font-family:Arial}
+header{text-align:center;background:#111827;padding:22px;position:sticky;top:0;z-index:10}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;padding:18px}
+.card{background:#1e293b;border:1px solid #334155;border-radius:18px;padding:18px}
+input,textarea,select{width:100%;padding:12px;margin:6px 0;border:0;border-radius:10px;font-size:16px}
+button{background:#2563eb;color:white;border:0;border-radius:10px;padding:11px 15px;margin:4px;font-weight:bold}
+.result{background:#020617;padding:12px;border-radius:10px;margin-top:8px;word-break:break-word}
+a{color:white}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🚀 VIRAT SOCIAL X</h1>
+<p>EXTRA TOOLS HUB</p>
+</header>
+
+<div class="grid">
+
+<div class="card">
+<h2>🧾 GST Calculator</h2>
+<input id="gstA" type="number" placeholder="Amount ₹">
+<input id="gstR" type="number" placeholder="GST %">
+<button onclick="gst()">Calculate</button>
+<div class="result" id="gstOut"></div>
+</div>
+
+<div class="card">
+<h2>⚖️ BMI Calculator</h2>
+<input id="height" type="number" placeholder="Height cm">
+<input id="weight" type="number" placeholder="Weight kg">
+<button onclick="bmi()">Calculate</button>
+<div class="result" id="bmiOut"></div>
+</div>
+
+<div class="card">
+<h2>💵 Tip Calculator</h2>
+<input id="bill" type="number" placeholder="Bill ₹">
+<input id="tip" type="number" placeholder="Tip %">
+<button onclick="tipCalc()">Calculate</button>
+<div class="result" id="tipOut"></div>
+</div>
+
+<div class="card">
+<h2>🎂 Age Calculator</h2>
+<input id="dob" type="date">
+<button onclick="age()">Calculate Age</button>
+<div class="result" id="ageOut"></div>
+</div>
+
+<div class="card">
+<h2>📅 Days Between Dates</h2>
+<input id="date1" type="date">
+<input id="date2" type="date">
+<button onclick="days()">Calculate</button>
+<div class="result" id="daysOut"></div>
+</div>
+
+<div class="card">
+<h2>🔗 QR Generator</h2>
+<input id="qrText" placeholder="Text या Website Link">
+<button onclick="makeQR()">Generate QR</button>
+<div id="qrOut" class="result"></div>
+</div>
+
+<div class="card">
+<h2>📦 JSON Formatter</h2>
+<textarea id="json" rows="6" placeholder='{"name":"Virat"}'></textarea>
+<button onclick="formatJSON()">Format</button>
+<div class="result" id="jsonOut"></div>
+</div>
+
+<div class="card">
+<h2>🔢 Number Base Converter</h2>
+<input id="num" placeholder="Number">
+<select id="base">
+<option value="2">Decimal → Binary</option>
+<option value="8">Decimal → Octal</option>
+<option value="16">Decimal → Hex</option>
+</select>
+<button onclick="baseConvert()">Convert</button>
+<div class="result" id="baseOut"></div>
+</div>
+
+</div>
+
+<p style="text-align:center;padding:20px">
+<a href="tools.html">⚡ Tools Hub</a> |
+<a href="tools-pro.html">🚀 Pro Tools</a> |
+<a href="../index.html">🏠 Home</a>
+</p>
+
+<script>
+function gst(){
+ let a=+gstA.value,r=+gstR.value;
+ let g=a*r/100;
+ gstOut.innerText="GST: ₹"+g.toFixed(2)+" | Total: ₹"+(a+g).toFixed(2);
+}
+
+function bmi(){
+ let h=+height.value/100,w=+weight.value;
+ if(!h||!w){bmiOut.innerText="Details भरें";return}
+ let b=w/(h*h);
+ let status=b<18.5?"Underweight":b<25?"Normal":b<30?"Overweight":"Obesity";
+ bmiOut.innerText="BMI: "+b.toFixed(2)+" — "+status;
+}
+
+function tipCalc(){
+ let b=+bill.value,t=+tip.value;
+ let x=b*t/100;
+ tipOut.innerText="Tip: ₹"+x.toFixed(2)+" | Total: ₹"+(b+x).toFixed(2);
+}
+
+function age(){
+ let d=new Date(dob.value);
+ if(isNaN(d)){ageOut.innerText="Date चुनें";return}
+ let now=new Date();
+ let y=now.getFullYear()-d.getFullYear();
+ let m=now.getMonth()-d.getMonth();
+ if(m<0 || (m===0 && now.getDate()<d.getDate()))y--;
+ ageOut.innerText="आपकी उम्र लगभग "+y+" वर्ष है";
+}
+
+function days(){
+ let a=new Date(date1.value),b=new Date(date2.value);
+ if(isNaN(a)||isNaN(b)){daysOut.innerText="दोनों dates चुनें";return}
+ daysOut.innerText=Math.abs(Math.round((b-a)/86400000))+" दिन";
+}
+
+function makeQR(){
+ let text=qrText.value.trim();
+ if(!text){qrOut.innerText="Text/Link डालें";return}
+ let img=document.createElement("img");
+ img.width=220;
+ img.alt="QR Code";
+ img.src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="+encodeURIComponent(text);
+ qrOut.innerHTML="";
+ qrOut.appendChild(img);
+}
+
+function formatJSON(){
+ try{
+  let x=JSON.parse(json.value);
+  jsonOut.innerText=JSON.stringify(x,null,2);
+ }catch(e){
+  jsonOut.innerText="❌ Invalid JSON";
+ }
+}
+
+function baseConvert(){
+ let n=parseInt(num.value,10);
+ if(isNaN(n)){baseOut.innerText="Valid number डालें";return}
+ baseOut.innerText=n.toString(+base.value).toUpperCase();
+}
+</script>
+
+</body>
+</html>
