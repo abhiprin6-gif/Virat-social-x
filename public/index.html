@@ -1,8 +1,429 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🇮🇳 VIRAT SOCIAL X</title>
+<link rel="stylesheet" href="Css/style.css">
 
+<style>
+/* ===== TOP HEADER ===== */
+.top-header{
+position:sticky;
+top:0;
+z-index:9999;
+padding:10px 14px;
+background:linear-gradient(90deg,#ff6a00,#ffffff,#079447);
+box-shadow:0 5px 25px #0003;
+}
 
+.header-inner{
+max-width:1400px;
+margin:auto;
+display:flex;
+align-items:center;
+gap:12px;
+}
 
+.logo{
+flex-shrink:0;
+}
 
+.main-search{
+flex:1;
+height:50px;
+border:3px solid #0784ff;
+border-radius:30px;
+padding:0 20px;
+font-size:16px;
+outline:none;
+background:#fff;
+box-shadow:0 0 12px #0784ff88;
+}
 
+.icon-btn{
+width:50px;
+height:50px;
+border:0;
+border-radius:50%;
+background:#fff;
+font-size:23px;
+cursor:pointer;
+box-shadow:0 4px 15px #0003;
+transition:.2s;
+}
 
+.icon-btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 18px #0784ff;
+}
 
+.notification-badge{
+position:relative;
+}
 
+.notification-badge span{
+position:absolute;
+top:-3px;
+right:-3px;
+background:#e11d48;
+color:#fff;
+font-size:11px;
+min-width:18px;
+height:18px;
+border-radius:50%;
+display:grid;
+place-items:center;
+font-weight:bold;
+}
+
+/* ===== NOTIFICATION PANEL ===== */
+.notify-panel{
+position:fixed;
+right:15px;
+top:78px;
+width:330px;
+max-width:calc(100% - 30px);
+background:#fff;
+border-radius:20px;
+padding:18px;
+box-shadow:0 15px 50px #0004;
+border:2px solid #0784ff;
+display:none;
+z-index:10000;
+}
+
+.notify-panel.show{
+display:block;
+animation:pop .2s ease;
+}
+
+@keyframes pop{
+from{transform:translateY(-10px);opacity:0}
+to{transform:translateY(0);opacity:1}
+}
+
+.notify-panel h3{
+color:#17499b;
+margin-bottom:12px;
+}
+
+.notification-item{
+padding:12px;
+border-radius:14px;
+background:#f4f8ff;
+margin-top:8px;
+border-left:4px solid #0784ff;
+}
+
+/* ===== LOCATION ===== */
+.location-new{
+color:#0784ff;
+font-size:29px;
+font-weight:900;
+text-shadow:0 0 10px #0784ff;
+}
+
+/* ===== SEARCH RESULT ===== */
+.no-result{
+display:none;
+text-align:center;
+padding:25px;
+font-weight:bold;
+color:#17499b;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:600px){
+.header-inner{
+gap:7px;
+}
+.main-search{
+height:46px;
+padding:0 13px;
+font-size:14px;
+}
+.icon-btn{
+width:45px;
+height:45px;
+font-size:20px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== SINGLE TOP HEADER ===== -->
+<header class="top-header">
+<div class="header-inner">
+
+<div class="logo">V</div>
+
+<input
+id="mainSearch"
+class="main-search"
+type="search"
+placeholder="🔍 Search VIRAT SOCIAL X..."
+autocomplete="off"
+>
+
+<button class="icon-btn" onclick="useLocation()" title="Location">
+<span class="location-new">⌖</span>
+</button>
+
+<button class="icon-btn notification-badge"
+onclick="toggleNotifications()"
+title="Notifications">
+🔔
+<span id="notifyCount">4</span>
+</button>
+
+</div>
+</header>
+
+<!-- ===== NOTIFICATION PANEL ===== -->
+<div id="notifyPanel" class="notify-panel">
+
+<h3>🔔 Notifications</h3>
+
+<div class="notification-item">
+🇮🇳 <b>Welcome</b><br>
+VIRAT SOCIAL X पर आपका स्वागत है।
+</div>
+
+<div class="notification-item">
+🤖 <b>AI Assistant</b><br>
+VIRAT AI Assistant उपलब्ध है।
+</div>
+
+<div class="notification-item">
+🛠️ <b>Smart Tools</b><br>
+Useful tools अब उपलब्ध हैं।
+</div>
+
+<div class="notification-item">
+🚀 <b>New Update</b><br>
+Website में नई सुविधाएँ जोड़ी गई हैं।
+</div>
+
+</div>
+
+<!-- ===== MAIN ===== -->
+<main class="layout">
+
+<section class="hero">
+<div class="heroBox">
+<h2>🇮🇳 VIRAT SOCIAL X</h2>
+<p>
+<b>ALL INDIA ONE PLATFORM</b>
+</p>
+<p>
+Government, Jobs, Education, Hospital, Emergency,
+Sports, News और Smart Tools — सब एक जगह।
+</p>
+</div>
+</section>
+
+<div class="grid" id="helpGrid">
+
+<div class="help" data-search="emergency emergency help">
+<div class="helpIcon">🆘</div>
+<h3>Emergency Help</h3>
+<p>Emergency services और जरूरी सहायता</p>
+</div>
+
+<div class="help" data-search="hospital health doctor">
+<div class="helpIcon">🏥</div>
+<h3>Hospital & Health</h3>
+<p>Hospital और health resources</p>
+</div>
+
+<div class="help" data-search="government scheme sarkari">
+<div class="helpIcon">🏛️</div>
+<h3>Government Schemes</h3>
+<p>सरकारी योजनाओं की जानकारी</p>
+</div>
+
+<div class="help" data-search="jobs work naukri">
+<div class="helpIcon">💼</div>
+<h3>Jobs & Work</h3>
+<p>Jobs और employment resources</p>
+</div>
+
+<div class="help" data-search="education study padhai">
+<div class="helpIcon">📚</div>
+<h3>Education</h3>
+<p>Education और learning resources</p>
+</div>
+
+<div class="help" data-search="legal law kanoon">
+<div class="helpIcon">⚖️</div>
+<h3>Legal Help</h3>
+<p>Legal information और resources</p>
+</div>
+
+<div class="help" data-search="business dukaan">
+<div class="helpIcon">🏪</div>
+<h3>Business</h3>
+<p>Business और useful resources</p>
+</div>
+
+<div class="help" data-search="nearby location hospital police">
+<div class="helpIcon location-new">⌖</div>
+<h3>Nearby Help</h3>
+<p>अपने आसपास की जरूरी services खोजें</p>
+</div>
+
+</div>
+
+<div id="noResult" class="no-result">
+🔍 कोई result नहीं मिला।
+</div>
+
+<section class="emergency">
+<h2>🚨 Quick Emergency</h2>
+
+<div class="buttons">
+
+<button class="btn" onclick="callNumber('112')">
+📞 Police / Emergency 112
+</button>
+
+<button class="btn" onclick="callNumber('108')">
+🚑 Ambulance 108
+</button>
+
+<button class="btn" onclick="callNumber('101')">
+🔥 Fire 101
+</button>
+
+</div>
+</section>
+
+<section class="ai">
+
+<h2>🤖 VIRAT AI Assistant</h2>
+
+<input
+id="question"
+placeholder="अपना सवाल लिखें..."
+>
+
+<button onclick="askVirat()">Ask VIRAT AI</button>
+
+<p id="answer" style="margin-top:15px;font-weight:bold"></p>
+
+</section>
+
+</main>
+
+<footer>
+🇮🇳 <b>VIRAT SOCIAL X</b><br>
+All India One Platform
+</footer>
+
+<script src="Js/app.js"></script>
+
+<script>
+/* ===== SEARCH ===== */
+const searchBox=document.getElementById("mainSearch");
+
+searchBox.addEventListener("input",function(){
+
+const q=this.value.toLowerCase().trim();
+const cards=document.querySelectorAll(".help");
+let found=0;
+
+cards.forEach(card=>{
+
+const text=(
+card.innerText+" "+
+(card.dataset.search||"")
+).toLowerCase();
+
+if(!q || text.includes(q)){
+card.style.display="";
+found++;
+}else{
+card.style.display="none";
+}
+
+});
+
+document.getElementById("noResult").style.display=
+found===0 ? "block" : "none";
+
+});
+
+/* ===== NOTIFICATIONS ===== */
+function toggleNotifications(){
+
+const panel=document.getElementById("notifyPanel");
+
+panel.classList.toggle("show");
+
+document.getElementById("notifyCount").textContent="0";
+
+}
+
+document.addEventListener("click",function(e){
+
+const panel=document.getElementById("notifyPanel");
+const buttons=document.querySelectorAll(".notification-badge");
+
+let inside=panel.contains(e.target);
+
+buttons.forEach(b=>{
+if(b.contains(e.target)) inside=true;
+});
+
+if(!inside){
+panel.classList.remove("show");
+}
+
+});
+
+/* ===== LOCATION ===== */
+function useLocation(){
+
+if(!navigator.geolocation){
+
+alert("इस device में Location उपलब्ध नहीं है।");
+return;
+
+}
+
+navigator.geolocation.getCurrentPosition(
+
+function(pos){
+
+const lat=pos.coords.latitude;
+const lon=pos.coords.longitude;
+
+window.open(
+"https://www.google.com/maps/search/hospital/@"+
+lat+","+lon+",14z",
+"_blank"
+);
+
+},
+
+function(){
+
+alert("📍 Location permission Allow करें।");
+
+}
+
+);
+
+}
+
+/* ===== EMERGENCY ===== */
+function callNumber(number){
+window.location.href="tel:"+number;
+}
+</script>
+
+</body>
+</html>
