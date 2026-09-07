@@ -598,17 +598,12 @@ Business, Nearby, News, Sports और Smart Tools — सब एक जगह।
 
 <section class="ai">
 
-<h2>🤖 VIRAT AI Assistant</h2>
-
-<input
-id="question"
-placeholder="अपना सवाल लिखें..."
->
-
-<button onclick="askVirat()">Ask VIRAT AI</button>
-
-<p id="answer"></p>
-
+<section id="virat-ai-box" style="display:block!important;visibility:visible!important;opacity:1!important;position:relative!important;z-index:999!important;margin:20px auto!important;padding:20px!important;max-width:900px!important;background:#111827!important;color:#fff!important;border-radius:20px!important;border:2px solid #22c55e!important;">
+<h2 style="display:block!important;color:#fff!important;">🤖 VIRAT AI Assistant</h2>
+<p style="display:block!important;color:#d1d5db!important;">VIRAT AI से अपना सवाल पूछें</p>
+<textarea id="question" placeholder="अपना सवाल यहाँ लिखें..." style="display:block!important;width:100%!important;min-height:100px!important;padding:14px!important;margin:12px 0!important;background:#fff!important;color:#111!important;border-radius:12px!important;border:1px solid #ccc!important;"></textarea>
+<button onclick="askVirat()" style="display:block!important;padding:12px 20px!important;background:#22c55e!important;color:#000!important;border:0!important;border-radius:12px!important;font-weight:bold!important;cursor:pointer!important;">🤖 Ask VIRAT AI</button>
+<div id="answer" style="display:block!important;min-height:40px!important;margin-top:15px!important;padding:12px!important;color:#fff!important;"></div>
 </section>
 
 </main>
