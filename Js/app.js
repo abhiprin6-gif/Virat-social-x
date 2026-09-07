@@ -27,27 +27,42 @@ function useLocation(){
   );
 }
 
-function askVirat(){
-  const q=(document.getElementById("question")?.value || "").trim();
-  const answer=document.getElementById("answer");
-  if(!answer) return;
+async function askVirat(){
+  const input = document.getElementById("question");
+  const answer = document.getElementById("answer");
 
-  if(!q){
-    answer.textContent="पहले अपनी समस्या लिखें।";
+  if (!input || !answer) return;
+
+  const q = input.value.trim();
+
+  if (!q) {
+    answer.textContent = "अपना सवाल लिखें।";
     return;
   }
 
-  const text=q.toLowerCase();
+  answer.textContent = "🤖 VIRAT AI सोच रहा है...";
 
-  if(text.includes("hospital") || text.includes("इलाज") || text.includes("doctor")){
-    answer.textContent="🏥 Hospital & Health section खोलें।";
-  }else if(text.includes("job") || text.includes("नौकरी")){
-    answer.textContent="💼 Jobs & Work section खोलें।";
-  }else if(text.includes("scheme") || text.includes("योजना")){
-    answer.textContent="🏛️ Government Schemes section खोलें।";
-  }else if(text.includes("education") || text.includes("पढ़") || text.includes("padh")){
-    answer.textContent="📚 Education section खोलें।";
-  }else{
-    answer.textContent="🤖 VIRAT AI: आपकी समस्या के लिए सही Help category खोजें।";
+  try {
+    const response = await fetch("http://127.0.0.1:3000/api/ai", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        question: q
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "AI server error");
+    }
+
+    answer.textContent = "🤖 VIRAT AI: " + (data.answer || "जवाब नहीं मिला।");
+  } catch (error) {
+    console.error("VIRAT AI:", error);
+    answer.textContent =
+      "❌ AI से connection नहीं हो पाया। कृपया AI server चालू है या नहीं जाँचें।";
   }
 }
