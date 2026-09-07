@@ -741,7 +741,7 @@ async function askVirat(){
   answer.textContent = "🤖 VIRAT AI सोच रहा है...";
 
   try {
-    const response = await fetch("http://127.0.0.1:3000/api/ai", {
+    const response = await fetch("https://virat-ai-server.onrender.com/api/ai", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
