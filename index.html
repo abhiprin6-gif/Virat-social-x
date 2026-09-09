@@ -674,11 +674,12 @@ cursor:pointer;
 <button class="logo menu-logo" id="vMenuBtn" type="button">V</button>
 
 <div class="title">
-<h1>VIRAT SOCIAL <span class="s">X</span></h1>
+<h1>VIRAT SOCIAL CITIZEN SERVICE HUB</h1>
 <small>HELP • CONNECT • EMPOWER</small>
 </div>
 
 <input id="search" class="search" oninput="searchHelp()" placeholder="🔍 मदद खोजें...">
+<button id="headerAiButton" type="button" class="round" title="VIRAT AI">🤖</button>
 
 <div class="round" onclick="useLocation()">📍</div>
 <div class="round">🔔</div>
@@ -769,9 +770,9 @@ cursor:pointer;
 </p>
 
 <input id="question" placeholder="जैसे: सरकारी योजना कैसे खोजूँ?">
-<button onclick="askVirat()">Ask VIRAT AI</button>
+<button id="viratAiButton" type="button">🤖 Ask VIRAT AI</button>
 
-<p id="answer" style="margin-top:95px;font-weight:bold"></p>
+<p id="aiAnswer" style="margin-top:95px;font-weight:bold"></p>
 </section>
 
 </main>
@@ -1005,3 +1006,72 @@ font-size:16px!important;
 }
 }
 </style>
+
+<script id="VIRAT-HEADER-AI">
+document.addEventListener("DOMContentLoaded", function () {
+
+  const headerAI = document.getElementById("headerAiButton");
+  const question = document.getElementById("question");
+  const button = document.getElementById("viratAiButton");
+  const answer = document.getElementById("aiAnswer");
+
+  if (headerAI && question) {
+    headerAI.addEventListener("click", function () {
+      question.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+      setTimeout(function () {
+        question.focus();
+      }, 400);
+    });
+  }
+
+  if (button && question && answer) {
+    button.addEventListener("click", async function () {
+
+      const q = question.value.trim();
+
+      if (!q) {
+        answer.textContent = "पहले अपना सवाल लिखें।";
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = "🤖 VIRAT AI सोच रहा है...";
+      answer.textContent = "⏳ जवाब तैयार किया जा रहा है...";
+
+      try {
+        const response = await fetch(
+          "https://virat-ai-server.onrender.com/api/ai",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ question: q })
+          }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "AI server error");
+        }
+
+        answer.textContent =
+          data.answer || "मुझे अभी जवाब नहीं मिल पाया।";
+
+      } catch (error) {
+        console.error("VIRAT AI ERROR:", error);
+        answer.textContent =
+          "❌ VIRAT AI error: " + error.message;
+      } finally {
+        button.disabled = false;
+        button.textContent = "🤖 Ask VIRAT AI";
+      }
+    });
+  }
+
+});
+</script>
