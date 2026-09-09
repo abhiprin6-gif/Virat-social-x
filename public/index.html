@@ -310,7 +310,7 @@ id="question"
 placeholder="अपना सवाल लिखें..."
 >
 
-<button onclick="askVirat()">Ask VIRAT AI</button>
+<button id="viratAiButton" type="button">🤖 Ask VIRAT AI</button>
 
 <p id="answer" style="margin-top:15px;font-weight:bold"></p>
 
@@ -423,6 +423,81 @@ alert("📍 Location permission Allow करें।");
 function callNumber(number){
 window.location.href="tel:"+number;
 }
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const button = document.getElementById("viratAiButton");
+  if (!button) return;
+
+  button.addEventListener("click", async function () {
+    const questionBox =
+      document.getElementById("question") ||
+      document.querySelector("textarea");
+
+    if (!questionBox) {
+      alert("AI question box नहीं मिला।");
+      return;
+    }
+
+    const question = questionBox.value.trim();
+
+    if (!question) {
+      alert("पहले अपना सवाल लिखें।");
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = "🤖 VIRAT AI सोच रहा है...";
+
+    let answerBox =
+      document.getElementById("aiAnswer") ||
+      document.getElementById("answer");
+
+    if (!answerBox) {
+      answerBox = document.createElement("div");
+      answerBox.id = "aiAnswer";
+      answerBox.style.cssText =
+        "margin-top:15px;padding:15px;background:#111827;color:#fff;border-radius:12px;white-space:pre-wrap;";
+      button.parentNode.appendChild(answerBox);
+    }
+
+    answerBox.textContent = "⏳ VIRAT AI से जवाब लिया जा रहा है...";
+
+    try {
+      const response = await fetch(
+        "https://virat-ai-server.onrender.com/api/ai",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            question: question
+          })
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "AI server error");
+      }
+
+      answerBox.textContent =
+        data.answer || "मुझे अभी जवाब नहीं मिल पाया।";
+
+    } catch (error) {
+      console.error("VIRAT AI ERROR:", error);
+      answerBox.textContent =
+        "❌ VIRAT AI error: " + error.message;
+    } finally {
+      button.disabled = false;
+      button.textContent = "🤖 Ask VIRAT AI";
+    }
+  });
+});
 </script>
 
 </body>
