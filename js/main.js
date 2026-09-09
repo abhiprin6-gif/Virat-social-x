@@ -218,3 +218,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+
+  /* HOME -> AI */
+  const openAIFromHome = document.getElementById("openAIFromHome");
+
+  if (openAIFromHome) {
+    openAIFromHome.addEventListener("click", () => {
+      openSection("ai");
+
+      setTimeout(() => {
+        const box = document.getElementById("question");
+        if (box) box.focus();
+      }, 100);
+    });
+  }
